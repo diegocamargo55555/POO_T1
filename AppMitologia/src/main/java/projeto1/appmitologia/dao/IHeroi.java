@@ -9,5 +9,6 @@ public interface IHeroi {
     public void insere(Heroi heroi) throws SQLException;
     public void atualiza(Heroi heroi) throws SQLException;
     public void remove(Heroi heroi) throws SQLException;
+    public Heroi buscaPorCodigo(int heroiId) throws SQLException;
     public List<Heroi> listaTodos() throws SQLException;
 }

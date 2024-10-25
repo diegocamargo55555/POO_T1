@@ -49,7 +49,7 @@
             <Insets bottom="50.0" top="30.0" />
          </padding>
          <left>
-            <TextField promptText="Usuário" style="-fx-background-color: #E5F3FF;" BorderPane.alignment="CENTER">
+            <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.6" prefWidth="159.2" promptText="Usuário" style="-fx-background-color: #E5F3FF;" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets left="70.0" right="70.0" />
                </BorderPane.margin>
@@ -62,12 +62,12 @@
             </TextField>
          </left>
          <right>
-            <PasswordField promptText="Senha" style="-fx-background-color: #E5F3FF;" BorderPane.alignment="CENTER">
+            <PasswordField minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.6" prefWidth="159.2" promptText="Senha" style="-fx-background-color: #E5F3FF;" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets left="70.0" right="70.0" />
                </BorderPane.margin>
                <font>
-                  <Font size="37.0" />
+                  <Font size="15.0" />
                </font>
             </PasswordField>
          </right>

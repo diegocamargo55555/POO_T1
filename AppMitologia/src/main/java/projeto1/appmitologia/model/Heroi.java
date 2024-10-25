@@ -4,10 +4,15 @@ public class Heroi {
     private int id;
     private String nome;
     private String descricao;
-    public Heroi(String nome, int id, String descricao) {
+    private String imagem;
+    public Heroi(){
+
+    }
+    public Heroi(String nome, int id, String descricao, String imagem) {
         this.nome = nome;
         this.id = id;
         this.descricao = descricao;
+        this.imagem = imagem;
     }
     public String getNome() {
         return nome;
@@ -24,7 +29,14 @@ public class Heroi {
     public String getDescricao() {
         return descricao;
     }
-    public void setDescricaoHeroi(String descricao) {
+    public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }
