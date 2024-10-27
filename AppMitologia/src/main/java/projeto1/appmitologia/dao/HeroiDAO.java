@@ -22,13 +22,16 @@ public class HeroiDAO implements IHeroi, IConst{
     }
     public void insere(Heroi heroi) throws SQLException {
         open();
-        sql = "INSERT INTO heroi(heroiId, descricaoHeroi, imagemHeroi, nomeHeroi) VALUES(?,?,?,?)";
-        statement = connection.prepareStatement(sql);
-        statement.setInt(1, heroi.getId());
-        statement.setString(2, heroi.getDescricao());
-        statement.setString(3, heroi.getImagem());
-        statement.setString(4, heroi.getNome());
+        System.out.println("AAA");
+        sql = "INSERT INTO heroi(heroiId, descricaoHeroi, imagemHeroi, nomeHeroi) VALUES(DEFAULT,?,?,?)";statement = connection.prepareStatement(sql);
+        statement.setString(1, heroi.getDescricao());
+        System.out.println("AAA");
+        statement.setString(2, heroi.getImagem());
+        System.out.println("AAA");
+        statement.setString(3, heroi.getNome());
+        System.out.println("AAA");
         statement.executeUpdate();
+        System.out.println("AAA");
         close();
     }
 

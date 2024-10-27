@@ -8,9 +8,8 @@ public class Heroi {
     public Heroi(){
 
     }
-    public Heroi(String nome, int id, String descricao, String imagem) {
+    public Heroi(String descricao, String imagem, String nome) {
         this.nome = nome;
-        this.id = id;
         this.descricao = descricao;
         this.imagem = imagem;
     }

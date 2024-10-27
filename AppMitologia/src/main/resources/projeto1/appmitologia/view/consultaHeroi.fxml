@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url(https://i.ibb.co/Jz4QYTs/fundo2.png); -fx-background-size: 100% 100%;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar>
+         <menus>
+            <Menu mnemonicParsing="false" text="Herói">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Consultar" />
+                  <MenuItem mnemonicParsing="false" text="Deletar" />
+                  <MenuItem mnemonicParsing="false" text="Atualizar" />
+                  <MenuItem mnemonicParsing="false" text="Incluir" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Conto">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Consultar" />
+                  <MenuItem mnemonicParsing="false" text="Deletar" />
+                  <MenuItem mnemonicParsing="false" text="Atualizar" />
+                  <MenuItem mnemonicParsing="false" text="Incluir" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <GridPane prefHeight="322.0" prefWidth="601.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="355.5999755859375" minWidth="10.0" prefWidth="307.5999755859375" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="311.60003662109375" minWidth="10.0" prefWidth="292.4000244140625" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="68.79999198913575" minHeight="10.0" prefHeight="64.000004196167" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="194.39999389648438" minHeight="10.0" prefHeight="154.399995803833" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="139.9999801635742" minHeight="10.0" prefHeight="40.79998779296872" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="91.99998779296874" minHeight="10.0" prefHeight="63.000012207031205" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TableView prefHeight="171.0" prefWidth="460.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+              <columns>
+                <TableColumn prefWidth="75.0" text="idHeroi" />
+                <TableColumn prefWidth="75.0" text="nomeHeroi" />
+                  <TableColumn minWidth="0.0" prefWidth="145.6000518798828" text="descricaoHeroi" />
+                  <TableColumn prefWidth="184.7999267578125" text="imagemHeroi" />
+              </columns>
+               <GridPane.margin>
+                  <Insets left="70.0" right="70.0" />
+               </GridPane.margin>
+            </TableView>
+            <Text fill="#fffffd" strokeType="OUTSIDE" strokeWidth="0.0" text="Consulta de Heróis" textAlignment="CENTER" wrappingWidth="602.5804138183594">
+               <font>
+                  <Font name="Times New Roman" size="29.0" />
+               </font>
+            </Text>
+            <TextField prefHeight="27.0" prefWidth="207.0" promptText="nome" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="70.0" right="30.0" top="15.0" />
+               </GridPane.margin>
+            </TextField>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira o nome do Heroi a ser pesquisado" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets right="30.0" top="15.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="586.0" style="-fx-border-color: ffff; -fx-background-color: dba656;" text="Atualizar" textFill="WHITE" GridPane.columnSpan="2" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="60.0" right="60.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
+   </children>
+</VBox>

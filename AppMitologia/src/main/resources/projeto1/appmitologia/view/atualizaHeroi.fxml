@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url(https://i.ibb.co/Jz4QYTs/fundo2.png); -fx-background-size: 100% 100%;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar>
+         <menus>
+            <Menu mnemonicParsing="false" text="Herói">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Consultar" />
+                  <MenuItem mnemonicParsing="false" text="Deletar" />
+                  <MenuItem mnemonicParsing="false" text="Atualizar" />
+                  <MenuItem mnemonicParsing="false" text="Incluir" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Conto">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Consultar" />
+                  <MenuItem mnemonicParsing="false" text="Deletar" />
+                  <MenuItem mnemonicParsing="false" text="Atualizar" />
+                  <MenuItem mnemonicParsing="false" text="Incluir" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <GridPane prefHeight="312.0" prefWidth="479.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="117.60000610351562" minHeight="10.0" prefHeight="38.20001220703125" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="94.20000114440919" minHeight="0.0" prefHeight="27.799987792968757" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="129.20000000000002" minHeight="10.0" prefHeight="34.999975585937506" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="135.79998626708985" minHeight="6.799993896484381" prefHeight="24.600024414062517" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="172.8000061035156" minHeight="10.0" prefHeight="45.00001220703123" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="156.0000518798828" minHeight="10.0" prefHeight="70.59998779296876" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="143.80003967285154" minHeight="10.0" prefHeight="40.40001220703124" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="143.80003967285154" minHeight="10.0" prefHeight="49.99998779296874" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <TextField prefHeight="28.0" prefWidth="261.0" promptText="Imagem" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </TextField>
+            <Text fill="#fffffd" strokeType="OUTSIDE" strokeWidth="0.0" text="Atualização de Heróis" textAlignment="CENTER" wrappingWidth="480.1803894042969">
+               <font>
+                  <Font name="Times New Roman" size="29.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="* Insira apenas os campos a serem alterados" wrappingWidth="471.52455139160156" GridPane.rowIndex="6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <TextField promptText="Nome" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextArea maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="66.0" prefWidth="493.0" promptText="Descrição" GridPane.columnSpan="2" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </TextArea>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira o nome para o Herói" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira a url de uma imagem do heroi" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="486.0" style="-fx-border-color: ffff; -fx-background-color: dba656;" text="Atualizar" textFill="WHITE" GridPane.columnSpan="2" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira a Descrição do Herói" textAlignment="CENTER" wrappingWidth="470.9367003440857" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+         </children>
+         <VBox.margin>
+            <Insets left="60.0" right="60.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding>
+      </GridPane>
+   </children>
+</VBox>

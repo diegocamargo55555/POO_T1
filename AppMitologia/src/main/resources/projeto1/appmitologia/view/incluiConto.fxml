@@ -1,14 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="projeto1.appmitologia.controller.IncluiContoController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="341.0" prefWidth="600.0" style="-fx-background-image: url('https://i.ibb.co/9gRffQg/fundo1.png'); -fx-background-size: 100% 100%;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="Herói">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Consultar" />
+                        <MenuItem mnemonicParsing="false" text="Deletar" />
+                        <MenuItem mnemonicParsing="false" text="Atualizar" />
+                        <MenuItem mnemonicParsing="false" text="Incluir" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Conto">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Consultar" />
+                        <MenuItem mnemonicParsing="false" text="Deletar" />
+                        <MenuItem mnemonicParsing="false" text="Atualizar" />
+                        <MenuItem mnemonicParsing="false" text="Incluir" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <GridPane prefHeight="301.0" prefWidth="600.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.66668701171875" minWidth="10.0" prefWidth="69.66665649414062" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.66668701171875" minWidth="10.0" prefWidth="208.99997965494788" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="413.66667683919263" minWidth="10.0" prefWidth="268.9999796549479" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="365.99998474121094" minWidth="10.0" prefWidth="63.00002034505212" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="62.999996185302734" minHeight="5.0" prefHeight="62.999996185302734" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="61.00001525878906" minHeight="0.0" prefHeight="20.333333333333336" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="80.99998474121095" minHeight="10.0" prefHeight="36.666676839192704" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="80.99998474121095" minHeight="9.333333333333329" prefHeight="9.999989827473954" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="112.66666412353516" minHeight="0.0" prefHeight="31.333323160807282" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="129.66665649414062" minHeight="10.0" prefHeight="35.333343505859375" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="139.3333282470703" minHeight="10.0" prefHeight="19.999989827473968" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="179.99998474121097" minHeight="10.0" prefHeight="45.000005086263" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="178.66668701171872" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira o nome do Conto:" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets left="40.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira a descrição do Conto:" wrappingWidth="247.1119384765625" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <TextField prefHeight="25.0" prefWidth="234.0" promptText="Nome do Herói " GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                </TextField>
+                <TextField alignment="TOP_LEFT" prefHeight="25.0" prefWidth="249.0" promptText="Nome do Conto" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                    <GridPane.margin>
+                        <Insets left="40.0" right="10.0" />
+                    </GridPane.margin>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </TextField>
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira o nome do Herói: " GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira a localização:" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                    <GridPane.margin>
+                        <Insets left="40.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <TextField promptText="Localização " GridPane.columnIndex="2" GridPane.rowIndex="5">
+                    <GridPane.margin>
+                        <Insets left="40.0" right="10.0" />
+                    </GridPane.margin>
+                </TextField>
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Contos" textAlignment="CENTER" wrappingWidth="481.28778076171875" GridPane.columnIndex="1" GridPane.columnSpan="2">
+                    <font>
+                        <Font name="Times New Roman" size="40.0" />
+                    </font>
+                </Text>
+                <TextArea prefHeight="129.0" prefWidth="211.0" promptText="Descrição" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.rowSpan="3" />
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="281.0" style="-fx-background-color: #dba656; -fx-border-color: #Ffff;" text="Criar" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <font>
+                        <Font name="Times New Roman" size="20.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="SE_RESIZE" />
+                    </cursor>
+                    <GridPane.margin>
+                        <Insets bottom="10.0" left="40.0" right="10.0" top="10.0" />
+                    </GridPane.margin>
+                </Button>
+            </children>
+        </GridPane>
+    </children>
+</VBox>
