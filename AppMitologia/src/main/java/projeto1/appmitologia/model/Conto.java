@@ -1,19 +1,19 @@
 package projeto1.appmitologia.model;
 
 public class Conto {
-    private int id;
+    int id;
     private String descricao;
     private String nome;
-    private int ano;
     private String localizacao;
-    private int heroiId;
-    public Conto(int id, String descricao, String nome, int ano, String localizacao, int heroiId) {
-        this.id = id;
+    private String nomeHeroi;
+    public Conto() {
+
+    }
+    public Conto(String descricao, String nome, String localizacao, String nomeHeroi) {
         this.descricao = descricao;
         this.nome = nome;
-        this.ano = ano;
         this.localizacao = localizacao;
-        this.heroiId = heroiId;
+        this.nomeHeroi = nomeHeroi;
     }
     public int getId() {
         return id;
@@ -33,23 +33,18 @@ public class Conto {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public int getAno() {
-        return ano;
-    }
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
+
     public String getLocalizacao() {
         return localizacao;
     }
     public void setLocalizacao(String localizacao) {
         this.localizacao = localizacao;
     }
-    public int getHeroiId() {
-        return heroiId;
+    public String getNomeHeroi() {
+        return nomeHeroi;
     }
-    public void setHeroiId(int heroiId) {
-        this.heroiId = heroiId;
+    public void setNomeHeroi(String nomeHeroi) {
+        this.nomeHeroi = nomeHeroi;
     }
 
 }

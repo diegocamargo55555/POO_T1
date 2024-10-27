@@ -22,50 +22,47 @@ public class HeroiDAO implements IHeroi, IConst{
     }
     public void insere(Heroi heroi) throws SQLException {
         open();
-        System.out.println("AAA");
-        sql = "INSERT INTO heroi(heroiId, descricaoHeroi, imagemHeroi, nomeHeroi) VALUES(DEFAULT,?,?,?)";statement = connection.prepareStatement(sql);
+        sql = "INSERT INTO heroi(heroiId, descricaoHeroi, imagemHeroi, nomeHeroi) VALUES(DEFAULT,?,?,?)";
+        statement = connection.prepareStatement(sql);
         statement.setString(1, heroi.getDescricao());
-        System.out.println("AAA");
         statement.setString(2, heroi.getImagem());
-        System.out.println("AAA");
         statement.setString(3, heroi.getNome());
-        System.out.println("AAA");
         statement.executeUpdate();
-        System.out.println("AAA");
         close();
     }
 
     public void atualiza(Heroi heroi) throws SQLException {
         open();
-        sql = "UPDATE heroi SET descricaoHeroi = ?, imagemHeroi = ?, nomeHeroi = ?, WHERE estudante_id = ?";
+        sql = "UPDATE heroi SET descricaoHeroi = ?, imagemHeroi = ?, nomeHeroi = ? WHERE nomeHeroi = ?";
         statement = connection.prepareStatement(sql);
         statement.setString(1, heroi.getDescricao());
         statement.setString(2, heroi.getImagem());
         statement.setString(3, heroi.getNome());
+        statement.setString(4, heroi.getNome());
         statement.executeUpdate();
         close();
     }
 
-    public void remove(Heroi heroi) throws SQLException {
+    public void remove(String nome) throws SQLException {
         open();
-        sql = "DELETE FROM heroi WHERE heroiId = ?";
+        sql = "DELETE FROM heroi WHERE nomeHeroi ~* ?";
         statement = connection.prepareStatement(sql);
-        statement.setInt(1, heroi.getId());
+        statement.setString(1, nome);
         statement.executeUpdate();
         close();
     }
 
-    public Heroi buscaPorCodigo(int heroiId) throws SQLException {
+    public Heroi buscaPorNome(String nomeHeroi) throws SQLException {
         open();
-        sql = "SELECT * FROM heroi WHERE heroiId = ?";
+        sql = "SELECT * FROM heroi WHERE nomeHeroi = ?";
         statement = connection.prepareStatement(sql);
-        statement.setInt(1, heroiId);
+        statement.setString(1, nomeHeroi);
         result = statement.executeQuery();
         if (result.next()) {
             Heroi heroi = new Heroi();
             heroi.setId(result.getInt("heroiId"));
             heroi.setNome(result.getString("nomeHeroi"));
-            heroi.setDescricao(result.getString("heroiDescricao"));
+            heroi.setDescricao(result.getString("descricaoHeroi"));
             heroi.setImagem(result.getString("imagemHeroi"));
             close();
             return heroi;
@@ -85,7 +82,7 @@ public class HeroiDAO implements IHeroi, IConst{
             Heroi heroi = new Heroi();
             heroi.setId(result.getInt("heroiId"));
             heroi.setNome(result.getString("nomeHeroi"));
-            heroi.setDescricao(result.getString("heroiDescricao"));
+            heroi.setDescricao(result.getString("descricaoHeroi"));
             heroi.setImagem(result.getString("imagemHeroi"));
             herois.add(heroi);
         }

@@ -38,4 +38,9 @@ public class Heroi {
     public void setImagem(String imagem) {
         this.imagem = imagem;
     }
+
+    @Override
+    public String toString() {
+        return nome + " " + descricao;
+    }
 }
