@@ -9,8 +9,5 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-       ContoDAO contoDAO = new ContoDAO();
-       Conto c1 = new Conto("contoo,","b","c", "gg");
-       contoDAO.atualiza(c1);
     }
 }

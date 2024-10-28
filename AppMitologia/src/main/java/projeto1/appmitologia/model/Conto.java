@@ -46,5 +46,8 @@ public class Conto {
     public void setNomeHeroi(String nomeHeroi) {
         this.nomeHeroi = nomeHeroi;
     }
-
+    @Override
+    public String toString() {
+        return nome + " " + localizacao + " " + descricao + " " + nomeHeroi;
+    }
 }

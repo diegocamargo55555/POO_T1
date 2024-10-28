@@ -72,6 +72,27 @@ public class HeroiDAO implements IHeroi, IConst{
         }
     }
 
+    public Heroi buscaPorId(int heroiid) throws SQLException {
+        open();
+        sql = "SELECT * FROM heroi WHERE heroiid = ?";
+        statement = connection.prepareStatement(sql);
+        statement.setInt(1, heroiid);
+        result = statement.executeQuery();
+        if (result.next()) {
+            Heroi heroi = new Heroi();
+            heroi.setId(result.getInt("heroiId"));
+            heroi.setNome(result.getString("nomeHeroi"));
+            heroi.setDescricao(result.getString("descricaoHeroi"));
+            heroi.setImagem(result.getString("imagemHeroi"));
+            close();
+            return heroi;
+        } else{
+            close();
+            return null;
+        }
+    }
+
+
     public List<Heroi> listaTodos() throws SQLException {
         open();
         sql = "SELECT * FROM heroi";

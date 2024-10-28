@@ -11,4 +11,5 @@ public interface IHeroi {
     public void remove(String nome) throws SQLException;
     public Heroi buscaPorNome(String nomeHeroi) throws SQLException;
     public List<Heroi> listaTodos() throws SQLException;
+    public Heroi buscaPorId(int heroiid) throws SQLException;
 }
