@@ -12,67 +12,77 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="341.0" prefWidth="600.0" style="-fx-background-image: url('https://i.ibb.co/J23VK39/pintura.jpg'); -fx-background-size: 100% 100%;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="341.0" prefWidth="600.0"
+      style="-fx-background-image: url('https://i.ibb.co/J23VK39/pintura.jpg'); -fx-background-size: 100% 100%;"
+      xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="projeto1.appmitologia.controller.MenuController">
    <children>
       <MenuBar>
-        <menus>
-          <Menu mnemonicParsing="false" text="Herói">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Consultar" />
-                  <MenuItem mnemonicParsing="false" text="Deletar" />
-                  <MenuItem mnemonicParsing="false" text="Atualizar" />
-                  <MenuItem mnemonicParsing="false" text="Incluir" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Conto">
+         <menus>
+            <Menu mnemonicParsing="false" text="Herói">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Consultar" />
-                  <MenuItem mnemonicParsing="false" text="Deletar" />
-                  <MenuItem mnemonicParsing="false" text="Atualizar" />
-                  <MenuItem mnemonicParsing="false" text="Incluir" />
+                  <MenuItem fx:id="consultaHeroi" onAction="#consultaHeroiOnAction" mnemonicParsing="false" text="Consultar"/>
+                  <MenuItem fx:id="deletaHeroi" onAction="#deletaHeroiOnAction" mnemonicParsing="false" text="Deletar"/>
+                  <MenuItem fx:id="atualizaHeroi" onAction="#atualizaHeroiOnAction" mnemonicParsing="false" text="Atualizar"/>
+                  <MenuItem fx:id="incluiHeroi" onAction="#incluiHeroiOnAction" mnemonicParsing="false" text="Incluir"/>
                </items>
             </Menu>
-        </menus>
+            <Menu mnemonicParsing="false" text="Conto">
+               <items>
+                  <MenuItem fx:id="consultaConto" onAction="#consultaContoOnAction" mnemonicParsing="false" text="Consultar"/>
+                  <MenuItem fx:id="deletaConto"  onAction="#deletaContoOnAction" mnemonicParsing="false" text="Deletar"/>
+                  <MenuItem fx:id="atualizaConto" onAction="#atualizaContoOnAction" mnemonicParsing="false" text="Atualizar"/>
+                  <MenuItem fx:id="incluiConto" onAction="#incluiContoOnAction" mnemonicParsing="false" text="Incluir"/>
+               </items>
+            </Menu>
+         </menus>
       </MenuBar>
       <BorderPane prefHeight="335.0" prefWidth="600.0">
          <top>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke-width: 1; -fx-stroke: #2D71AA;" text="Contos Heróicos" BorderPane.alignment="CENTER">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0"
+                  style="-fx-stroke-width: 1; -fx-stroke: #2D71AA;" text="Contos Heróicos"
+                  BorderPane.alignment="CENTER">
                <font>
-                  <Font name="Times New Roman" size="50.0" />
+                  <Font name="Times New Roman" size="50.0"/>
                </font>
                <BorderPane.margin>
-                  <Insets />
+                  <Insets/>
                </BorderPane.margin>
             </Text>
          </top>
          <padding>
-            <Insets bottom="50.0" top="30.0" />
+            <Insets bottom="50.0" top="30.0"/>
          </padding>
          <left>
-            <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.6" prefWidth="159.2" promptText="Usuário" style="-fx-background-color: #E5F3FF;" BorderPane.alignment="CENTER">
+            <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                       prefHeight="29.6" prefWidth="159.2" promptText="Usuário"
+                       style="-fx-background-color: #E5F3FF;" BorderPane.alignment="CENTER">
                <BorderPane.margin>
-                  <Insets left="70.0" right="70.0" />
+                  <Insets left="70.0" right="70.0"/>
                </BorderPane.margin>
                <font>
-                  <Font size="15.0" />
+                  <Font size="15.0"/>
                </font>
             </TextField>
          </left>
          <right>
-            <PasswordField minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.6" prefWidth="159.2" promptText="Senha" style="-fx-background-color: #E5F3FF;" BorderPane.alignment="CENTER">
+            <PasswordField minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.6" prefWidth="159.2"
+                           promptText="Senha" style="-fx-background-color: #E5F3FF;" BorderPane.alignment="CENTER">
                <BorderPane.margin>
-                  <Insets left="70.0" right="70.0" />
+                  <Insets left="70.0" right="70.0"/>
                </BorderPane.margin>
                <font>
-                  <Font size="15.0" />
+                  <Font size="15.0"/>
                </font>
             </PasswordField>
          </right>
          <bottom>
-            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="154.0" style="-fx-background-color: #2D71AA;" text="Entrar" BorderPane.alignment="CENTER">
+            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="154.0"
+                    style="-fx-background-color: #2D71AA;" text="Entrar" BorderPane.alignment="CENTER">
                <font>
-                  <Font size="15.0" />
-               </font></Button>
+                  <Font size="15.0"/>
+               </font>
+            </Button>
          </bottom>
       </BorderPane>
    </children>

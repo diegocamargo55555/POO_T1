@@ -1,13 +1,26 @@
 package projeto1.appmitologia.main;
 
-import projeto1.appmitologia.dao.ContoDAO;
-import projeto1.appmitologia.dao.HeroiDAO;
-import projeto1.appmitologia.model.Conto;
-import projeto1.appmitologia.model.Heroi;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-import java.sql.SQLException;
+import java.io.IOException;
 
-public class Main {
-    public static void main(String[] args) throws SQLException {
+public class Main extends Application {
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader principal = new FXMLLoader(getClass().getResource("/projeto1/appmitologia/view/menu.fxml"));
+        Parent root = principal.load();
+        Scene scene = new Scene(root);
+        stage.setTitle("Herois");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    public static void main(String[] args)  {
+        launch(args);
     }
 }

@@ -84,6 +84,56 @@ public class ContoDAO implements IConst, IConto{
             return null;
         }
     }
+    public Conto buscaPorId(int id) throws SQLException {
+        open();
+        sql = "SELECT * FROM conto WHERE contoid = ?";
+        statement = connection.prepareStatement(sql);
+        statement.setInt(1, id);
+        result = statement.executeQuery();
+        if (result.next()) {
+            Conto conto = new Conto();
+            conto.setId(result.getInt("contoId"));
+            conto.setNome(result.getString("nomeConto"));
+            conto.setDescricao(result.getString("descricaoConto"));
+            conto.setLocalizacao(result.getString("localizacaoConto"));
+            Heroi heroi = new Heroi();
+            HeroiDAO heroiDAO = new HeroiDAO();
+            heroi.setId(result.getInt("heroiId"));
+            heroi = heroiDAO.buscaPorId(heroi.getId());
+            conto.setNomeHeroi(heroi.getNome());
+            close();
+            return conto;
+        } else{
+            close();
+            return null;
+        }
+    }
+    public Conto buscaPorNomeHeroi(String nomeHeroi) throws SQLException {
+        open();
+        Heroi heroi = new Heroi();
+        HeroiDAO heroiDAO = new HeroiDAO();
+        heroi = heroiDAO.buscaPorNome(nomeHeroi);
+        sql = "SELECT * FROM conto WHERE heroiid ~* ?";
+        statement = connection.prepareStatement(sql);
+        statement.setInt(1, heroi.getId());
+        result = statement.executeQuery();
+        if (result.next()) {
+            Conto conto = new Conto();
+            conto.setId(result.getInt("contoId"));
+            conto.setNome(result.getString("nomeConto"));
+            conto.setDescricao(result.getString("descricaoConto"));
+            conto.setLocalizacao(result.getString("localizacaoConto"));
+            heroi.setId(result.getInt("heroiId"));
+            heroi = heroiDAO.buscaPorId(heroi.getId());
+            conto.setNomeHeroi(heroi.getNome());
+            close();
+            return conto;
+        } else{
+            close();
+            return null;
+        }
+
+    }
     public List<Conto> listaTodos() throws SQLException {
         open();
         sql = "SELECT * FROM conto";

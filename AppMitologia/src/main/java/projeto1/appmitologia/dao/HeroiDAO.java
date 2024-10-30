@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import projeto1.appmitologia.model.Heroi;
 
 public class HeroiDAO implements IHeroi, IConst{
@@ -64,6 +66,13 @@ public class HeroiDAO implements IHeroi, IConst{
             heroi.setNome(result.getString("nomeHeroi"));
             heroi.setDescricao(result.getString("descricaoHeroi"));
             heroi.setImagem(result.getString("imagemHeroi"));
+            try {
+                heroi.setImagemFisica(new ImageView(new Image(heroi.getImagem())));
+            }catch (IllegalArgumentException e){
+                heroi.setImagemFisica(new ImageView(new Image("https://i.ibb.co/9hpB2Vj/notFound.png")));
+            }
+            heroi.getImagemFisica().setFitWidth(70);
+            heroi.getImagemFisica().setFitHeight(70);
             close();
             return heroi;
         } else{
@@ -84,6 +93,13 @@ public class HeroiDAO implements IHeroi, IConst{
             heroi.setNome(result.getString("nomeHeroi"));
             heroi.setDescricao(result.getString("descricaoHeroi"));
             heroi.setImagem(result.getString("imagemHeroi"));
+            try {
+                heroi.setImagemFisica(new ImageView(new Image(heroi.getImagem())));
+            }catch (IllegalArgumentException e){
+                heroi.setImagemFisica(new ImageView(new Image("https://i.ibb.co/9hpB2Vj/notFound.png")));
+            }
+            heroi.getImagemFisica().setFitWidth(70);
+            heroi.getImagemFisica().setFitHeight(70);
             close();
             return heroi;
         } else{
@@ -105,6 +121,14 @@ public class HeroiDAO implements IHeroi, IConst{
             heroi.setNome(result.getString("nomeHeroi"));
             heroi.setDescricao(result.getString("descricaoHeroi"));
             heroi.setImagem(result.getString("imagemHeroi"));
+            heroi.setImagem(result.getString("imagemHeroi"));
+            try {
+                heroi.setImagemFisica(new ImageView(new Image(heroi.getImagem())));
+            }catch (IllegalArgumentException e){
+                heroi.setImagemFisica(new ImageView(new Image("https://i.ibb.co/9hpB2Vj/notFound.png")));
+            }
+            heroi.getImagemFisica().setFitWidth(70);
+            heroi.getImagemFisica().setFitHeight(70);
             herois.add(heroi);
         }
         close();
