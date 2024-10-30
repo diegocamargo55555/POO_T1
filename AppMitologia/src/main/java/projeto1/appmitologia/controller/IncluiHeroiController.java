@@ -26,22 +26,32 @@ public class IncluiHeroiController {
         heroi.setDescricao(desc.getText());
         heroi.setImagem(img.getText());
 
-        HeroiDAO heroiDAO = new HeroiDAO();
-        try {
-            heroiDAO.insere(heroi);
-            Alert alert;
-            alert = new Alert(Alert.AlertType.INFORMATION, "Deseja inserir o Herói?", ButtonType.OK);
-            alert.setTitle("Herói cadastrado com sucesso!");
-            alert.setHeaderText("Informação");
-            alert.show();
-        } catch (SQLException e1) {
-            Alert alert;
-            alert = new Alert(Alert.AlertType.INFORMATION, "Você clicou no botão Cancelar", ButtonType.OK);
-            alert.setTitle("Fracasso ao cadastrar herói!");
-            alert.setHeaderText("Informação");
-            alert.show();
-            e1.printStackTrace();
-        }
-    }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Deseja inserir o Herói?", ButtonType.CANCEL, ButtonType.OK);
+        alert.setTitle("Herói pode ser cadastrado!");
+        alert.setHeaderText("Informação");
 
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                HeroiDAO heroiDAO = new HeroiDAO();
+                try {
+                    heroiDAO.insere(heroi);
+                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION, "Herói cadastrado com sucesso!", ButtonType.OK);
+                    successAlert.setTitle("Sucesso");
+                    successAlert.setHeaderText("Informação");
+                    successAlert.show();
+                } catch (SQLException e1) {
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR, "Erro ao cadastrar herói!", ButtonType.OK);
+                    errorAlert.setTitle("Erro");
+                    errorAlert.setHeaderText("Informação");
+                    errorAlert.show();
+                    e1.printStackTrace();
+                }
+            } else {
+                Alert cancelAlert = new Alert(Alert.AlertType.INFORMATION, "Cadastro de herói cancelado.", ButtonType.OK);
+                cancelAlert.setTitle("Cancelado");
+                cancelAlert.setHeaderText("Informação");
+                cancelAlert.show();
+            }
+        });
+    }
 }
