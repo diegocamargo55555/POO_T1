@@ -2,9 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -17,27 +14,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('https://i.ibb.co/YNnnS6w/fundo3.jpg'); -fx-background-size: 100% 100%;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto1.appmitologia.controller.ConsultaContoController">
     <children>
-        <MenuBar>
-            <menus>
-                <Menu mnemonicParsing="false" text="Herói">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Consultar" />
-                        <MenuItem mnemonicParsing="false" text="Deletar" />
-                        <MenuItem mnemonicParsing="false" text="Atualizar" />
-                        <MenuItem mnemonicParsing="false" text="Incluir" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Conto">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Consultar" />
-                        <MenuItem mnemonicParsing="false" text="Deletar" />
-                        <MenuItem mnemonicParsing="false" text="Atualizar" />
-                        <MenuItem mnemonicParsing="false" text="Incluir" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
-        <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="600.0">
+        <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="600.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="355.5999755859375" minWidth="10.0" prefWidth="63.33332316080729" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="355.5999755859375" minWidth="10.0" prefWidth="233.3333435058594" />
@@ -66,12 +43,12 @@
                         <Insets left="-20.0" top="-10.0" />
                     </GridPane.margin>
                 </TableView>
-                <TextField fx:id="txtNomeHeroi" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="188.0" promptText="Nome Heroi" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                <TextField fx:id="txtNomeHeroi" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#txtNomeHeroiOnClick" prefHeight="26.0" prefWidth="188.0" promptText="Nome Heroi" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
                     <GridPane.margin>
                         <Insets left="-20.0" top="10.0" />
                     </GridPane.margin>
                 </TextField>
-                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira o nome do Heroi" wrappingWidth="193.87335205078125" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira o nome do Heroi OU" wrappingWidth="193.87335205078125" GridPane.columnIndex="1" GridPane.rowIndex="3">
                     <GridPane.margin>
                         <Insets left="-20.0" top="10.0" />
                     </GridPane.margin>
@@ -92,7 +69,7 @@
                   <Insets top="-30.0" />
                </GridPane.margin>
                 </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira o nome do Conto" wrappingWidth="248.57196044921875" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira o nome do Conto OU" wrappingWidth="248.57196044921875" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <font>
                   <Font name="Times New Roman" size="16.0" />
                </font>
@@ -100,12 +77,12 @@
                   <Insets top="10.0" />
                </GridPane.margin>
             </Text>
-            <TextField fx:id="txtNomeConto" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="260.0" promptText="Nome Conto" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <TextField fx:id="txtNomeConto" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#txtNomeContoOnClick" prefHeight="26.0" prefWidth="260.0" promptText="Nome Conto" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets top="10.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="txtId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="53.0" promptText="id" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <TextField fx:id="txtId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#txtIdOnClick" prefHeight="26.0" prefWidth="53.0" promptText="id" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="-120.0" top="20.0" />
                </GridPane.margin>

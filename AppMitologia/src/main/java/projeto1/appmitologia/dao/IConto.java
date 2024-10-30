@@ -9,6 +9,6 @@ import java.util.List;
 public interface IConto {
     public void insere(Conto conto) throws SQLException;
     public void atualiza(Conto conto) throws SQLException;
-    public void remove(String nome) throws SQLException;
+    public void remove(int id) throws SQLException;
     public List<Conto> listaTodos() throws SQLException;
 }

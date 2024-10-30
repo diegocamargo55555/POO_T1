@@ -45,11 +45,11 @@ public class HeroiDAO implements IHeroi, IConst{
         close();
     }
 
-    public void remove(String nome) throws SQLException {
+    public void remove(int id) throws SQLException {
         open();
-        sql = "DELETE FROM heroi WHERE nomeHeroi ~* ?";
+        sql = "DELETE FROM heroi WHERE heroiid = ?";
         statement = connection.prepareStatement(sql);
-        statement.setString(1, nome);
+        statement.setInt(1, id);
         statement.executeUpdate();
         close();
     }
@@ -112,6 +112,31 @@ public class HeroiDAO implements IHeroi, IConst{
     public List<Heroi> listaTodos() throws SQLException {
         open();
         sql = "SELECT * FROM heroi";
+        statement = connection.prepareStatement(sql);
+        result = statement.executeQuery();
+        ArrayList<Heroi> herois = new ArrayList<>();
+        while (result.next()) {
+            Heroi heroi = new Heroi();
+            heroi.setId(result.getInt("heroiId"));
+            heroi.setNome(result.getString("nomeHeroi"));
+            heroi.setDescricao(result.getString("descricaoHeroi"));
+            heroi.setImagem(result.getString("imagemHeroi"));
+            heroi.setImagem(result.getString("imagemHeroi"));
+            try {
+                heroi.setImagemFisica(new ImageView(new Image(heroi.getImagem())));
+            }catch (IllegalArgumentException e){
+                heroi.setImagemFisica(new ImageView(new Image("https://i.ibb.co/9hpB2Vj/notFound.png")));
+            }
+            heroi.getImagemFisica().setFitWidth(70);
+            heroi.getImagemFisica().setFitHeight(70);
+            herois.add(heroi);
+        }
+        close();
+        return herois;
+    }
+    public ArrayList<Heroi> listaTodosNomes(String nomeHeroi) throws SQLException{
+        open();
+        sql = "SELECT * FROM heroi WHERE nomeHeroi ~*'" + nomeHeroi + "'";
         statement = connection.prepareStatement(sql);
         result = statement.executeQuery();
         ArrayList<Heroi> herois = new ArrayList<>();

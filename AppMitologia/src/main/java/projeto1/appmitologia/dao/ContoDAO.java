@@ -51,38 +51,13 @@ public class ContoDAO implements IConst, IConto{
         statement.executeUpdate();
         close();
     }
-    public void remove(String nome) throws SQLException {
+    public void remove(int id) throws SQLException {
         open();
-        sql = "DELETE FROM conto WHERE nomeConto ~* ?";
+        sql = "DELETE FROM conto WHERE contoid = ?";
         statement = connection.prepareStatement(sql);
-        statement.setString(1, nome);
+        statement.setInt(1, id);
         statement.executeUpdate();
         close();
-    }
-
-    public Conto buscaPorNome(String nomeConto) throws SQLException {
-        open();
-        sql = "SELECT * FROM conto WHERE nomeConto ~* ?";
-        statement = connection.prepareStatement(sql);
-        statement.setString(1, nomeConto);
-        result = statement.executeQuery();
-        if (result.next()) {
-            Conto conto = new Conto();
-            conto.setId(result.getInt("contoId"));
-            conto.setNome(result.getString("nomeConto"));
-            conto.setDescricao(result.getString("descricaoConto"));
-            conto.setLocalizacao(result.getString("localizacaoConto"));
-            Heroi heroi = new Heroi();
-            HeroiDAO heroiDAO = new HeroiDAO();
-            heroi.setId(result.getInt("heroiId"));
-            heroi = heroiDAO.buscaPorId(heroi.getId());
-            conto.setNomeHeroi(heroi.getNome());
-            close();
-            return conto;
-        } else{
-            close();
-            return null;
-        }
     }
     public Conto buscaPorId(int id) throws SQLException {
         open();
@@ -108,16 +83,41 @@ public class ContoDAO implements IConst, IConto{
             return null;
         }
     }
-    public Conto buscaPorNomeHeroi(String nomeHeroi) throws SQLException {
+
+    public List<Conto> listaTodos() throws SQLException {
+        open();
+        sql = "SELECT * FROM conto";
+        statement = connection.prepareStatement(sql);
+        result = statement.executeQuery();
+        ArrayList<Conto> contos = new ArrayList<>();
+        while (result.next()) {
+            Conto conto = new Conto();
+            conto.setId(result.getInt("contoId"));
+            conto.setNome(result.getString("nomeConto"));
+            conto.setDescricao(result.getString("descricaoConto"));
+            conto.setLocalizacao(result.getString("localizacaoConto"));
+            Heroi heroi = new Heroi();
+            HeroiDAO heroiDAO = new HeroiDAO();
+            heroi.setId(result.getInt("heroiId"));
+            heroi = heroiDAO.buscaPorId(heroi.getId());
+            conto.setNomeHeroi(heroi.getNome());
+            contos.add(conto);
+        }
+        close();
+        return contos;
+    }
+
+    public ArrayList<Conto> listaTodosNomesHeroi(String nomeHeroi) throws SQLException {
         open();
         Heroi heroi = new Heroi();
         HeroiDAO heroiDAO = new HeroiDAO();
         heroi = heroiDAO.buscaPorNome(nomeHeroi);
-        sql = "SELECT * FROM conto WHERE heroiid ~* ?";
+        sql = "SELECT * FROM conto WHERE heroiid = ?";
         statement = connection.prepareStatement(sql);
         statement.setInt(1, heroi.getId());
         result = statement.executeQuery();
-        if (result.next()) {
+        ArrayList<Conto> contos = new ArrayList<>();
+        while (result.next()) {
             Conto conto = new Conto();
             conto.setId(result.getInt("contoId"));
             conto.setNome(result.getString("nomeConto"));
@@ -126,18 +126,17 @@ public class ContoDAO implements IConst, IConto{
             heroi.setId(result.getInt("heroiId"));
             heroi = heroiDAO.buscaPorId(heroi.getId());
             conto.setNomeHeroi(heroi.getNome());
-            close();
-            return conto;
-        } else{
-            close();
-            return null;
+            contos.add(conto);
         }
-
+        close();
+        return contos;
     }
-    public List<Conto> listaTodos() throws SQLException {
+    public ArrayList<Conto> listaTodosNomeConto(String nomeConto) throws SQLException {
         open();
-        sql = "SELECT * FROM conto";
+        sql = "SELECT * FROM conto WHERE nomeConto ~* '" + nomeConto + "'";
         statement = connection.prepareStatement(sql);
+        System.out.println(sql);
+        //statement.setString(1, nomeConto);
         result = statement.executeQuery();
         ArrayList<Conto> contos = new ArrayList<>();
         while (result.next()) {

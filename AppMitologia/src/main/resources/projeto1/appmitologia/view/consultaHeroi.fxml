@@ -2,9 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -17,40 +14,20 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('https://i.ibb.co/YNnnS6w/fundo3.jpg'); -fx-background-size: 100% 100%;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto1.appmitologia.controller.ConsultaHeroiController">
    <children>
-      <MenuBar fx:id="menu">
-         <menus>
-            <Menu mnemonicParsing="false" text="Herói">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Consultar" />
-                  <MenuItem mnemonicParsing="false" text="Deletar" />
-                  <MenuItem mnemonicParsing="false" text="Atualizar" />
-                  <MenuItem mnemonicParsing="false" text="Incluir" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Conto">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Consultar" />
-                  <MenuItem mnemonicParsing="false" text="Deletar" />
-                  <MenuItem mnemonicParsing="false" text="Atualizar" />
-                  <MenuItem mnemonicParsing="false" text="Incluir" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
-      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="601.0">
+      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="602.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="355.5999755859375" minWidth="10.0" prefWidth="307.5999755859375" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="311.60003662109375" minWidth="10.0" prefWidth="292.4000244140625" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="355.5999755859375" minWidth="10.0" prefWidth="308.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="311.60003662109375" minWidth="10.0" prefWidth="293.79999999999995" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="68.79999198913575" minHeight="10.0" prefHeight="36.800014114379884" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="194.39999389648438" minHeight="10.0" prefHeight="183.19998588562012" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="139.9999801635742" minHeight="10.0" prefHeight="40.79998779296872" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="139.9999801635742" minHeight="10.0" prefHeight="40.79998779296872" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="91.99998779296874" minHeight="10.0" prefHeight="63.000012207031205" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="73.39999618530274" minHeight="10.0" prefHeight="73.39999618530274" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="194.39999389648438" minHeight="10.0" prefHeight="144.60000381469726" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="139.9999801635742" minHeight="10.0" prefHeight="86.19999389648436" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="139.9999801635742" minHeight="0.0" prefHeight="8.600006103515625" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="106.60002441406249" minHeight="10.0" prefHeight="78.19999999999999" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView fx:id="tblHeroi" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="154.0" prefWidth="522.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <TableView fx:id="tblHeroi" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="522.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
               <columns>
                 <TableColumn fx:id="idColuna" prefWidth="75.0" text="idHeroi" />
                 <TableColumn fx:id="nomeColuna" prefWidth="75.0" text="nomeHeroi" />
@@ -66,7 +43,7 @@
                   <Font name="Times New Roman" size="29.0" />
                </font>
             </Text>
-            <TextField fx:id="txtNome" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="226.0" promptText="nome" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="txtNome" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#txtNomeOnClick" prefHeight="26.0" prefWidth="226.0" promptText="nome" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="30.0" />
                </GridPane.margin>
@@ -84,7 +61,7 @@
                   <Insets left="60.0" right="60.0" />
                </GridPane.margin>
             </Button>
-            <TextField fx:id="txtId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="38.0" promptText="id" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="txtId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#txtIdOnCLick" prefHeight="26.0" prefWidth="38.0" promptText="id" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="30.0" />
                </GridPane.margin>

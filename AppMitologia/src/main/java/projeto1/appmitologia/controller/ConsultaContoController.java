@@ -6,14 +6,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import projeto1.appmitologia.dao.ContoDAO;
-import projeto1.appmitologia.dao.HeroiDAO;
 import projeto1.appmitologia.model.Conto;
-import projeto1.appmitologia.model.Heroi;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 
 public class ConsultaContoController {
     @FXML
@@ -103,51 +104,50 @@ public class ConsultaContoController {
     }
     public void btnConsultarOnAction(ActionEvent actionEvent) throws SQLException {
         Conto conto1 = new Conto();
-        Conto conto2 = new Conto();
-        Conto conto3 = new Conto();
+        ArrayList<Conto> contos = new ArrayList<>();
         ContoDAO contoDAO = new ContoDAO();
         ObservableList<Conto> objeto = FXCollections.observableArrayList();
         preencherColunas();
-        if(!txtNomeHeroi.getText().isEmpty() || !txtNomeConto.getText().isEmpty() || !txtId.getText().isEmpty()){
-            if(!txtNomeHeroi.getText().isEmpty() && !txtNomeConto.getText().isEmpty() && !txtId.getText().isEmpty()) {
-                conto1.setNomeHeroi(txtNomeHeroi.getText());
-                conto2.setNome(txtNomeConto.getText());
-                conto3.setId(Integer.parseInt(txtId.getText()));
-                objeto.add(conto1);
-                if(conto1.getId() != conto2.getId()){
-                    objeto.add(conto2);
-                    if(conto2.getId() != conto3.getId()){
-                        objeto.add(conto3);
-                    }else{
-                        if(conto1.getId() != conto3.getId()){
-                            objeto.add(conto3);
-                        }
-                    }
-                }
-            }
+        if(!txtNomeHeroi.getText().isEmpty()){
+            contos = contoDAO.listaTodosNomesHeroi(txtNomeHeroi.getText());
+            objeto.addAll(contos);
             tblConto.setItems(objeto);
         } else{
-            objeto.addAll(contoDAO.listaTodos());
-
-        }
-        if(!txtNomeConto.getText().isEmpty()){
-
-        } else{
-            /*if(!txtId.getText().isEmpty()){
-                conto.setId(Integer.parseInt(txtId.getText()));
-                conto = contoDAO.buscaPorId(conto.getId());
-                objeto.add(conto);
+            if(!txtNomeConto.getText().isEmpty()){
+                contos = contoDAO.listaTodosNomeConto(txtNomeConto.getText());
+                objeto.addAll(contos);
                 tblConto.setItems(objeto);
             } else{
-                if(!txtNomeHeroi.getText().isEmpty()){
-                    conto.setNomeHeroi(txtNomeHeroi.getText());
-                    conto = contoDAO.buscaPorNomeHeroi(conto.getNomeHeroi());
-                    objeto.add(conto);
-                    tblConto.setItems(objeto);
+                if(!txtId.getText().isEmpty()){
+                    try {
+                        conto1 = contoDAO.buscaPorId(Integer.parseInt(txtId.getText()));
+                        objeto.add(conto1);
+                        tblConto.setItems(objeto);
+                    }catch(NumberFormatException e){
+                        Alert alert;
+                        alert = new Alert(Alert.AlertType.INFORMATION, "Não é possivel realizar a pesquisa, pois o id inserido não é um número!", ButtonType.OK);
+                        alert.setTitle("Insira um número para o Id!");
+                        alert.setHeaderText("Informação");
+                        alert.show();
+                        tblConto.setItems(getContos());
+                    }
                 } else{
+                    tblConto.setItems(getContos());
                 }
-            }*/
-
+            }
         }
+    }
+
+    public void txtNomeHeroiOnClick(MouseEvent mouseEvent) {
+       txtNomeConto.clear();
+       txtId.clear();
+    }
+    public void txtNomeContoOnClick(MouseEvent mouseEvent) {
+       txtNomeHeroi.clear();
+       txtId.clear();
+    }
+    public void txtIdOnClick(MouseEvent mouseEvent) {
+        txtNomeHeroi.clear();
+        txtNomeConto.clear();
     }
 }

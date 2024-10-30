@@ -7,14 +7,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import projeto1.appmitologia.dao.HeroiDAO;
-import projeto1.appmitologia.model.Conto;
 import projeto1.appmitologia.model.Heroi;
 
-import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConsultaHeroiController {
     @FXML
@@ -45,50 +46,32 @@ public class ConsultaHeroiController {
         return heroi;
     }
     public void btnConsultarOnAction(ActionEvent actionEvent) throws SQLException {
-        Heroi heroi1 = new Heroi();
-        Heroi heroi2 = new Heroi();
         HeroiDAO heroiDAO = new HeroiDAO();
         ObservableList<Heroi> objeto = FXCollections.observableArrayList();
         preencheColunas();
-        if(!txtNome.getText().isEmpty() || !txtId.getText().isEmpty()){
-            if(!txtNome.getText().isEmpty()){
-                heroi1.setNome(txtNome.getText());
-                heroi1 = heroiDAO.buscaPorNome(heroi1.getNome());
-                objeto.add(heroi1);
-                if(!txtId.getText().isEmpty()){
-                    try {
-                        heroi2.setId(Integer.parseInt(txtId.getText()));
-                        heroi2 = heroiDAO.buscaPorId(heroi2.getId());
-                        if (heroi2.getId() != heroi1.getId()) {
-                            objeto.add(heroi2);
-                        }
-                    }catch(NumberFormatException e) {
-                        Alert alert;
-                        alert = new Alert(Alert.AlertType.INFORMATION, "Não é possivel realizar a pesquisa, pois o id inerido não foi um número!", ButtonType.OK);
-                        alert.setTitle("Insira um número para o Id!");
-                        alert.setHeaderText("Informação");
-                        alert.show();
-                    }
-                }
-            }else {
-                if (!txtId.getText().isEmpty()) {
-                    try {
-                        heroi2.setId(Integer.parseInt(txtId.getText()));
-                        heroi2 = heroiDAO.buscaPorId(heroi2.getId());
-                        objeto.add(heroi2);
-                    } catch (NumberFormatException e) {
-                        Alert alert;
-                        alert = new Alert(Alert.AlertType.INFORMATION, "Não é possivel realizar a pesquisa, pois o id inserido não foi um número!", ButtonType.OK);
-                        alert.setTitle("Insira um número para o Id!");
-                        alert.setHeaderText("Informação");
-                        alert.show();
-                        tblHeroi.setItems(getHerois());
-                    }
-                }
-            }
+        if(!txtNome.getText().isEmpty()){
+            ArrayList<Heroi> herois = new ArrayList<>();
+            herois = heroiDAO.listaTodosNomes(txtNome.getText());
+            objeto.addAll(herois);
             tblHeroi.setItems(objeto);
         } else {
+            if (!txtId.getText().isEmpty()) {
+                try {
+                    Heroi heroi1 = new Heroi();
+                    heroi1 = heroiDAO.buscaPorId(Integer.parseInt(txtId.getText()));
+                    objeto.add(heroi1);
+                    tblHeroi.setItems(objeto);
+                } catch (NumberFormatException e) {
+                    Alert alert;
+                    alert = new Alert(Alert.AlertType.INFORMATION, "Não é possivel realizar a pesquisa, pois o id inserido não é um número!", ButtonType.OK);
+                    alert.setTitle("Insira um número para o Id!");
+                    alert.setHeaderText("Informação");
+                    alert.show();
+                    tblHeroi.setItems(getHerois());
+                }
+            } else {
                 tblHeroi.setItems(getHerois());
+            }
         }
     }
     public TableCell<Heroi, String> wrap(){
@@ -131,7 +114,12 @@ public class ConsultaHeroiController {
                 new PropertyValueFactory<Heroi, ImageView>("imagemFisica")
         );
     }
-    private void txtNomeOnMouseDragged(MouseEvent mouseEvent) {
+
+   public void txtNomeOnClick(MouseEvent mouseEvent) {
         txtId.clear();
-    }
+   }
+   public void txtIdOnCLick(MouseEvent mouseEvent) {
+        txtNome.clear();
+   }
+
 }
