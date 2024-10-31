@@ -1,4 +1,4 @@
 package projeto1.appmitologia.controller;
 
-public class DeletUser {
+public class DeletUserController {
 }

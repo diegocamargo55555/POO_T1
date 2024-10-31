@@ -1,6 +1,5 @@
 package projeto1.appmitologia.dao;
 
-import projeto1.appmitologia.model.Heroi;
 import projeto1.appmitologia.model.User;
 
 import java.sql.Connection;
