@@ -24,7 +24,7 @@ public class IncluiHeroiController {
         Heroi heroi = new Heroi();
         heroi.setNome(nome.getText());
         heroi.setDescricao(desc.getText());
-        heroi.setImagem(img.getText());
+        heroi.setUrl(img.getText());
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Deseja inserir o Herói?", ButtonType.CANCEL, ButtonType.OK);
         alert.setTitle("Herói pode ser cadastrado!");

@@ -32,7 +32,7 @@
             <RowConstraints maxHeight="143.80003967285154" minHeight="10.0" prefHeight="63.999979654947936" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TextField fx:id="nHeroi" prefHeight="25.0" prefWidth="235.0" promptText="Nome do Herói" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="idHeroiField" prefHeight="25.0" prefWidth="235.0" promptText="Id Herói" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="15.0" right="10.0" />
                </GridPane.margin>
@@ -79,7 +79,7 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Button fx:id="bAtualiza" onAction="#bAtualizaOnAction" mnemonicParsing="false" prefHeight="22.0" prefWidth="460.0" style="-fx-border-color: ffff; -fx-background-color: dba656;" text="Atualizar" textFill="WHITE" GridPane.columnSpan="2" GridPane.rowIndex="10">
+            <Button fx:id="bAtualiza" mnemonicParsing="false" onAction="#bAtualizaOnAction" prefHeight="22.0" prefWidth="460.0" style="-fx-border-color: ffff; -fx-background-color: dba656;" text="Atualizar" textFill="WHITE" GridPane.columnSpan="2" GridPane.rowIndex="10">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
@@ -97,7 +97,7 @@
                   <Font name="Times New Roman" size="40.0" />
                </font>
             </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome do Herói" textAlignment="RIGHT" wrappingWidth="209.14620971679688" GridPane.rowIndex="2">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Id do Herói" textAlignment="RIGHT" wrappingWidth="209.14620971679688" GridPane.rowIndex="2">
                <font>
                   <Font size="15.0" />
                </font>

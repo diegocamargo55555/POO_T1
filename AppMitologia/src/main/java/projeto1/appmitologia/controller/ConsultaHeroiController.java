@@ -111,7 +111,7 @@ public class ConsultaHeroiController {
             }
         });
         imgColuna.setCellValueFactory(
-                new PropertyValueFactory<Heroi, ImageView>("imagemFisica")
+                new PropertyValueFactory<Heroi, ImageView>("imagem")
         );
     }
 

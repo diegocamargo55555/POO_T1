@@ -6,7 +6,6 @@ import projeto1.appmitologia.dao.HeroiDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import java.sql.SQLException;
-import java.util.Optional;
 
 public class AtualizaHeroiController {
 
@@ -14,28 +13,38 @@ public class AtualizaHeroiController {
     private Button bAtualiza;
 
     @FXML
-    private TextField nHeroi, nome, img;
+    private TextField idHeroiField, nome, img;
 
     @FXML
     private TextArea desc;
 
     @FXML
     private void bAtualizaOnAction(ActionEvent event) {
-        if (nHeroi.getText().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Por favor, insira o nome do herói para atualizar.", ButtonType.OK);
-            alert.setTitle("Nome do Herói Necessário");
+        if (idHeroiField.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Por favor, insira o ID do herói para atualizar.", ButtonType.OK);
+            alert.setTitle("ID do Herói Necessário");
             alert.setHeaderText("Atenção");
             alert.show();
             return;
         }
 
-        String nomeHeroi = nHeroi.getText();
+        int idHeroi;
+        try {
+            idHeroi = Integer.parseInt(idHeroiField.getText());
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "ID do herói deve ser um número.", ButtonType.OK);
+            alert.setTitle("Erro no ID");
+            alert.setHeaderText("Atenção");
+            alert.show();
+            return;
+        }
+
         HeroiDAO heroiDAO = new HeroiDAO();
 
         try {
-            Heroi heroiExistente = heroiDAO.buscaPorNome(nomeHeroi);
+            Heroi heroiExistente = heroiDAO.buscaPorId(idHeroi);
             if (heroiExistente == null) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Herói com o nome " + nomeHeroi + " não encontrado.", ButtonType.OK);
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Herói com o ID " + idHeroi + " não encontrado.", ButtonType.OK);
                 alert.setTitle("Herói não encontrado");
                 alert.setHeaderText("Atenção");
                 alert.show();
@@ -49,7 +58,7 @@ public class AtualizaHeroiController {
                 heroiExistente.setDescricao(desc.getText());
             }
             if (!img.getText().isEmpty()) {
-                heroiExistente.setImagem(img.getText());
+                heroiExistente.setUrl(img.getText());
             }
 
             Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION, "Deseja atualizar o Herói?", ButtonType.CANCEL, ButtonType.OK);
@@ -86,6 +95,4 @@ public class AtualizaHeroiController {
             e.printStackTrace();
         }
     }
-
-
 }

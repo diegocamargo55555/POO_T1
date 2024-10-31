@@ -27,7 +27,7 @@ public class HeroiDAO implements IHeroi, IConst{
         sql = "INSERT INTO heroi(heroiId, descricaoHeroi, imagemHeroi, nomeHeroi) VALUES(DEFAULT,?,?,?)";
         statement = connection.prepareStatement(sql);
         statement.setString(1, heroi.getDescricao());
-        statement.setString(2, heroi.getImagem());
+        statement.setString(2, heroi.getUrl());
         statement.setString(3, heroi.getNome());
         statement.executeUpdate();
         close();
@@ -35,12 +35,12 @@ public class HeroiDAO implements IHeroi, IConst{
 
     public void atualiza(Heroi heroi) throws SQLException {
         open();
-        sql = "UPDATE heroi SET descricaoHeroi = ?, imagemHeroi = ?, nomeHeroi = ? WHERE nomeHeroi = ?";
+        sql = "UPDATE heroi SET descricaoHeroi = ?, imagemHeroi = ?, nomeHeroi = ? WHERE heroiId = ?";
         statement = connection.prepareStatement(sql);
         statement.setString(1, heroi.getDescricao());
-        statement.setString(2, heroi.getImagem());
+        statement.setString(2, heroi.getUrl());
         statement.setString(3, heroi.getNome());
-        statement.setString(4, heroi.getNome());
+        statement.setInt(4, heroi.getId());
         statement.executeUpdate();
         close();
     }
@@ -65,14 +65,7 @@ public class HeroiDAO implements IHeroi, IConst{
             heroi.setId(result.getInt("heroiId"));
             heroi.setNome(result.getString("nomeHeroi"));
             heroi.setDescricao(result.getString("descricaoHeroi"));
-            heroi.setImagem(result.getString("imagemHeroi"));
-            try {
-                heroi.setImagemFisica(new ImageView(new Image(heroi.getImagem())));
-            }catch (IllegalArgumentException e){
-                heroi.setImagemFisica(new ImageView(new Image("https://i.ibb.co/9hpB2Vj/notFound.png")));
-            }
-            heroi.getImagemFisica().setFitWidth(70);
-            heroi.getImagemFisica().setFitHeight(70);
+            heroi.setUrl(result.getString("imagemHeroi"));
             close();
             return heroi;
         } else{
@@ -92,14 +85,14 @@ public class HeroiDAO implements IHeroi, IConst{
             heroi.setId(result.getInt("heroiId"));
             heroi.setNome(result.getString("nomeHeroi"));
             heroi.setDescricao(result.getString("descricaoHeroi"));
-            heroi.setImagem(result.getString("imagemHeroi"));
+            heroi.setUrl(result.getString("imagemHeroi"));
             try {
-                heroi.setImagemFisica(new ImageView(new Image(heroi.getImagem())));
+                heroi.setImagemFisica(new ImageView(new Image(heroi.getUrl())));
             }catch (IllegalArgumentException e){
                 heroi.setImagemFisica(new ImageView(new Image("https://i.ibb.co/9hpB2Vj/notFound.png")));
             }
-            heroi.getImagemFisica().setFitWidth(70);
-            heroi.getImagemFisica().setFitHeight(70);
+            heroi.getImagem().setFitWidth(70);
+            heroi.getImagem().setFitHeight(70);
             close();
             return heroi;
         } else{
@@ -120,15 +113,15 @@ public class HeroiDAO implements IHeroi, IConst{
             heroi.setId(result.getInt("heroiId"));
             heroi.setNome(result.getString("nomeHeroi"));
             heroi.setDescricao(result.getString("descricaoHeroi"));
-            heroi.setImagem(result.getString("imagemHeroi"));
-            heroi.setImagem(result.getString("imagemHeroi"));
+            heroi.setUrl(result.getString("imagemHeroi"));
+            heroi.setUrl(result.getString("imagemHeroi"));
             try {
-                heroi.setImagemFisica(new ImageView(new Image(heroi.getImagem())));
+                heroi.setImagemFisica(new ImageView(new Image(heroi.getUrl())));
             }catch (IllegalArgumentException e){
                 heroi.setImagemFisica(new ImageView(new Image("https://i.ibb.co/9hpB2Vj/notFound.png")));
             }
-            heroi.getImagemFisica().setFitWidth(70);
-            heroi.getImagemFisica().setFitHeight(70);
+            heroi.getImagem().setFitWidth(70);
+            heroi.getImagem().setFitHeight(70);
             herois.add(heroi);
         }
         close();
@@ -145,15 +138,14 @@ public class HeroiDAO implements IHeroi, IConst{
             heroi.setId(result.getInt("heroiId"));
             heroi.setNome(result.getString("nomeHeroi"));
             heroi.setDescricao(result.getString("descricaoHeroi"));
-            heroi.setImagem(result.getString("imagemHeroi"));
-            heroi.setImagem(result.getString("imagemHeroi"));
+            heroi.setUrl(result.getString("imagemHeroi"));
             try {
-                heroi.setImagemFisica(new ImageView(new Image(heroi.getImagem())));
+                heroi.setImagemFisica(new ImageView(new Image(heroi.getUrl())));
             }catch (IllegalArgumentException e){
                 heroi.setImagemFisica(new ImageView(new Image("https://i.ibb.co/9hpB2Vj/notFound.png")));
             }
-            heroi.getImagemFisica().setFitWidth(70);
-            heroi.getImagemFisica().setFitHeight(70);
+            heroi.getImagem().setFitWidth(70);
+            heroi.getImagem().setFitHeight(70);
             herois.add(heroi);
         }
         close();

@@ -7,16 +7,16 @@ public class Heroi {
     private int id;
     private String nome;
     private String descricao;
-    private String imagem;
-    private ImageView imagemFisica;
+    private String url;
+    private ImageView imagem;
     public Heroi(){
 
     }
-    public Heroi(String descricao, ImageView imagemFisica, String nome, String imagem) {
+    public Heroi(String descricao, ImageView imagem, String nome, String url) {
         this.nome = nome;
         this.descricao = descricao;
-        this.imagemFisica = imagemFisica;
         this.imagem = imagem;
+        this.url = url;
     }
     public String getNome() {
         return nome;
@@ -37,20 +37,20 @@ public class Heroi {
         this.descricao = descricao;
     }
 
-    public String getImagem() {
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+
+    }
+
+    public ImageView getImagem() {
         return imagem;
     }
-
-    public void setImagem(String imagem) {
+    public void setImagemFisica(ImageView imagem) {
         this.imagem = imagem;
-
-    }
-
-    public ImageView getImagemFisica() {
-        return imagemFisica;
-    }
-    public void setImagemFisica(ImageView imagemFisica) {
-        this.imagemFisica = imagemFisica;
     }
 
     @Override

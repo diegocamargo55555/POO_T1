@@ -89,7 +89,7 @@ public class DeletaHeroiController {
             }
         });
         imgColuna.setCellValueFactory(
-                new PropertyValueFactory<Heroi, ImageView>("imagemFisica")
+                new PropertyValueFactory<Heroi, ImageView>("imagem")
         );
     }
 
@@ -105,11 +105,11 @@ public class DeletaHeroiController {
                         Heroi heroi = heroiDAO.buscaPorId(Integer.parseInt(txtId.getText()));
                         if(heroi != null){
                             heroiDAO.remove(Integer.parseInt(txtId.getText()));
-                            Alert alertConfirmacao = new Alert(Alert.AlertType.CONFIRMATION, "Heroi deletado com sucesso!", ButtonType.OK);
+                            Alert alertConfirmacao = new Alert(Alert.AlertType.INFORMATION, "Heroi deletado com sucesso!", ButtonType.OK);
                             alertConfirmacao.show();
                         } else{
-                            Alert alertHeroiNExtiste = new Alert(Alert.AlertType.INFORMATION, "Este heroi não existe!", ButtonType.OK);
-                            alertHeroiNExtiste.setTitle("Erro! Insira um heroi válido");
+                            Alert alertHeroiNExtiste = new Alert(Alert.AlertType.ERROR, "Erro! Insira um heroi válido", ButtonType.OK);
+                            alertHeroiNExtiste.setTitle("Este heroi não existe!");
                             alertHeroiNExtiste.show();
                         }
                     }catch (SQLException e1){

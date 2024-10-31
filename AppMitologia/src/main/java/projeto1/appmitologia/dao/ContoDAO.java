@@ -47,7 +47,6 @@ public class ContoDAO implements IConst, IConto{
         heroi = heroiDAO.buscaPorNome(conto.getNomeHeroi());
         statement.setInt(4, heroi.getId());
         statement.setString(5, conto.getNome());
-        System.out.println("a");
         statement.executeUpdate();
         close();
     }
@@ -136,7 +135,6 @@ public class ContoDAO implements IConst, IConto{
         sql = "SELECT * FROM conto WHERE nomeConto ~* '" + nomeConto + "'";
         statement = connection.prepareStatement(sql);
         System.out.println(sql);
-        //statement.setString(1, nomeConto);
         result = statement.executeQuery();
         ArrayList<Conto> contos = new ArrayList<>();
         while (result.next()) {
@@ -169,14 +167,12 @@ public class ContoDAO implements IConst, IConto{
             conto.setNome(result.getString("nomeConto"));
             conto.setDescricao(result.getString("descricaoConto"));
             conto.setLocalizacao(result.getString("localizacaoConto"));
-
             HeroiDAO heroiDAO = new HeroiDAO();
             Heroi heroi = heroiDAO.buscaPorId(result.getInt("heroiId"));
             if (heroi != null) {
                 conto.setNomeHeroi(heroi.getNome());
             }
         }
-
         close();
         return conto;
     }

@@ -39,6 +39,4 @@ public class UserDAO implements IConst {
         close();
     }
 
-
-
 }
