@@ -95,17 +95,43 @@ public class DeletaHeroiController {
 
     public void btnDeletarOnAction(ActionEvent actionEvent) throws SQLException {
         HeroiDAO heroiDAO = new HeroiDAO();
-        Alert alert;
         if(!txtId.getText().isEmpty()){
-            try {
-                    heroiDAO.remove(Integer.parseInt(txtId.getText()));
-            }catch (NumberFormatException e){
-                alert = new Alert(Alert.AlertType.INFORMATION, "Não é possivel realizar a remoção, pois o id inserido não é um número!", ButtonType.OK);
-                alert.setTitle("Insira um número para o Id!");
-                alert.setHeaderText("Informação");
-                alert.show();
-            }
-        } else{
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Deseja deletar o Herói?", ButtonType.CANCEL, ButtonType.OK);
+            alert.setHeaderText("Informação");
+
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    try {
+                        Heroi heroi = heroiDAO.buscaPorId(Integer.parseInt(txtId.getText()));
+                        if(heroi != null){
+                            heroiDAO.remove(Integer.parseInt(txtId.getText()));
+                            Alert alertConfirmacao = new Alert(Alert.AlertType.CONFIRMATION, "Heroi deletado com sucesso!", ButtonType.OK);
+                            alertConfirmacao.show();
+                        } else{
+                            Alert alertHeroiNExtiste = new Alert(Alert.AlertType.INFORMATION, "Este heroi não existe!", ButtonType.OK);
+                            alertHeroiNExtiste.setTitle("Erro! Insira um heroi válido");
+                            alertHeroiNExtiste.show();
+                        }
+                    }catch (SQLException e1){
+                        Alert errorAlert = new Alert(Alert.AlertType.ERROR, "Erro ao deletar heroi!", ButtonType.OK);
+                        errorAlert.setTitle("Erro");
+                        errorAlert.show();
+                        e1.printStackTrace();
+                    } catch (NumberFormatException e) {
+                        Alert alertId;
+                        alertId = new Alert(Alert.AlertType.INFORMATION, "Não é possivel realizar a remoção, pois o id inserido não é um número!", ButtonType.OK);
+                        alertId.setTitle("Insira um número para o Id!");
+                        alertId.show();
+                    }
+                } else{
+                    Alert cancelAlert = new Alert(Alert.AlertType.INFORMATION, "Reemoção cancelada.", ButtonType.OK);
+                    cancelAlert.setTitle("Cancelado");
+                    cancelAlert.setHeaderText("Informação");
+                    cancelAlert.show();
+                }
+            });
+        }  else {
+            Alert alert;
             alert = new Alert(Alert.AlertType.INFORMATION, "Insira um id para deletar o heroi!", ButtonType.OK);
             alert.setTitle("Insira um Id!");
             alert.setHeaderText("Informação");
