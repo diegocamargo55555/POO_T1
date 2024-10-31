@@ -4,13 +4,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import projeto1.appmitologia.dao.ContoDAO;
+import projeto1.appmitologia.dao.HeroiDAO;
 import projeto1.appmitologia.model.Conto;
+import projeto1.appmitologia.model.Heroi;
 import java.sql.SQLException;
 
 public class AtualizaContoController {
 
     @FXML
-    private TextField nomeConto, nomeHeroi, localizacao;
+    private TextField nomeConto, idConto, localizacao, nomeHeroi;
 
     @FXML
     private TextArea descricao;
@@ -20,21 +22,31 @@ public class AtualizaContoController {
 
     @FXML
     private void bAtualizaOnAction(ActionEvent event) {
-        if (nomeConto.getText().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Por favor, insira o nome do conto para atualizar.", ButtonType.OK);
-            alert.setTitle("Nome do Conto Necessário");
+        if (idConto.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Por favor, insira o ID do conto para atualizar.", ButtonType.OK);
+            alert.setTitle("ID do Conto Necessário");
             alert.setHeaderText("Atenção");
             alert.show();
             return;
         }
 
-        String nomeContoText = nomeConto.getText();
+        int id;
+        try {
+            id = Integer.parseInt(idConto.getText());
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "ID do Conto deve ser um número.", ButtonType.OK);
+            alert.setTitle("Erro no ID");
+            alert.setHeaderText("Atenção");
+            alert.show();
+            return;
+        }
+
         ContoDAO contoDAO = new ContoDAO();
 
         try {
-            Conto contoExistente = contoDAO.buscaPorNome(nomeContoText);
+            Conto contoExistente = contoDAO.buscaPorId(id);
             if (contoExistente == null) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Conto com o nome " + nomeContoText + " não encontrado.", ButtonType.OK);
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Conto com o ID " + id + " não encontrado.", ButtonType.OK);
                 alert.setTitle("Conto não encontrado");
                 alert.setHeaderText("Atenção");
                 alert.show();
@@ -46,6 +58,9 @@ public class AtualizaContoController {
             }
             if (!localizacao.getText().isEmpty()) {
                 contoExistente.setLocalizacao(localizacao.getText());
+            }
+            if (!nomeConto.getText().isEmpty()) {
+                contoExistente.setNome(nomeConto.getText());
             }
             if (!nomeHeroi.getText().isEmpty()) {
                 contoExistente.setNomeHeroi(nomeHeroi.getText());

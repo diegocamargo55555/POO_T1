@@ -35,18 +35,22 @@ public class ContoDAO implements IConst, IConto{
         statement.executeUpdate();
         close();
     }
-    public void atualiza(Conto conto) throws SQLException{
+    public void atualiza(Conto conto) throws SQLException {
         open();
-        sql = "UPDATE conto SET nomeConto = ?, descricaoConto = ?, localizacaoConto = ?, heroiid = ? WHERE nomeConto = ?";
-        statement = connection.prepareStatement(sql);
+        String sql = "UPDATE conto SET nomeConto = ?, descricaoConto = ?, localizacaoConto = ?, heroiId = ? WHERE contoId = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, conto.getNome());
         statement.setString(2, conto.getDescricao());
         statement.setString(3, conto.getLocalizacao());
-        Heroi heroi = new Heroi();
+
         HeroiDAO heroiDAO = new HeroiDAO();
-        heroi = heroiDAO.buscaPorNome(conto.getNomeHeroi());
-        statement.setInt(4, heroi.getId());
-        statement.setString(5, conto.getNome());
+        Heroi heroi = heroiDAO.buscaPorNome(conto.getNomeHeroi());
+        if (heroi != null) {
+            statement.setInt(4, heroi.getId());
+        } else {
+            throw new SQLException("Herói não encontrado para o nome informado.");
+        }
+        statement.setInt(5, conto.getId());
         statement.executeUpdate();
         close();
     }

@@ -12,11 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="341.0" prefWidth="600.0"
-      style="-fx-background-image: url('https://i.ibb.co/YNnnS6w/fundo3.jpg'); -fx-background-size: 100% 100%;"
-      xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto1.appmitologia.controller.AtualizaContoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="341.0" prefWidth="600.0" style="-fx-background-image: url('https://i.ibb.co/YNnnS6w/fundo3.jpg'); -fx-background-size: 100% 100%;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto1.appmitologia.controller.AtualizaContoController">
     <children>
-        <GridPane prefHeight="301.0" prefWidth="600.0">
+        <GridPane prefHeight="335.0" prefWidth="600.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.66668701171875" minWidth="10.0" prefWidth="69.66665649414062" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.66668701171875" minWidth="10.0" prefWidth="208.99997965494788" />
@@ -24,15 +22,16 @@
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="365.99998474121094" minWidth="10.0" prefWidth="63.00002034505212" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="62.999996185302734" minHeight="5.0" prefHeight="62.999996185302734" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="61.00001525878906" minHeight="0.0" prefHeight="20.333333333333336" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="80.99998474121095" minHeight="10.0" prefHeight="36.666676839192704" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="80.99998474121095" minHeight="9.333333333333329" prefHeight="9.999989827473954" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="112.66666412353516" minHeight="0.0" prefHeight="31.333323160807282" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="129.66665649414062" minHeight="10.0" prefHeight="35.333343505859375" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="139.3333282470703" minHeight="10.0" prefHeight="19.999989827473968" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="179.99998474121097" minHeight="10.0" prefHeight="45.000005086263" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="178.66668701171872" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="62.999996185302734" minHeight="5.0" prefHeight="53.66666158040365" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="61.00001525878906" minHeight="0.0" prefHeight="24.333338419596352" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="80.99998474121095" minHeight="10.0" prefHeight="34.66664632161459" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="112.66666412353516" minHeight="0.0" prefHeight="24.66668701171875" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="129.66665649414062" minHeight="10.0" prefHeight="36.666664123535156" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="139.3333282470703" minHeight="10.0" prefHeight="24.333323160807282" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="179.99998474121097" minHeight="0.0" prefHeight="37.00001017252603" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="178.66668701171872" minHeight="10.0" prefHeight="36.00000000000003" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="178.66668701171872" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="178.66668701171872" minHeight="10.0" prefHeight="79.66666666666663" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
                 <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome do Conto:" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -43,7 +42,7 @@
                         <Font size="18.0" />
                     </font>
                 </Text>
-                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição do Conto:" wrappingWidth="247.1119384765625" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição do Conto:" wrappingWidth="247.1119384765625" GridPane.columnIndex="1" GridPane.rowIndex="3">
                     <GridPane.margin>
                         <Insets />
                     </GridPane.margin>
@@ -51,7 +50,7 @@
                         <Font size="18.0" />
                     </font>
                 </Text>
-                <TextField fx:id="nomeHeroi" prefHeight="25.0" prefWidth="234.0" promptText="Nome do Herói " GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <TextField fx:id="idConto" prefHeight="25.0" prefWidth="234.0" promptText="ID Conto" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <GridPane.margin>
                         <Insets />
                     </GridPane.margin>
@@ -64,7 +63,7 @@
                         <Insets />
                     </opaqueInsets>
                 </TextField>
-                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome do Herói: " GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Id do Conto: " GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <GridPane.margin>
                         <Insets />
                     </GridPane.margin>
@@ -72,7 +71,7 @@
                         <Font size="18.0" />
                     </font>
                 </Text>
-                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Localização:" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Localização:" GridPane.columnIndex="2" GridPane.rowIndex="3">
                     <GridPane.margin>
                         <Insets left="40.0" />
                     </GridPane.margin>
@@ -80,7 +79,7 @@
                         <Font size="18.0" />
                     </font>
                 </Text>
-                <TextField fx:id="localizacao" promptText="Local" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                <TextField fx:id="localizacao" promptText="Local" GridPane.columnIndex="2" GridPane.rowIndex="4">
                     <GridPane.margin>
                         <Insets left="40.0" right="10.0" />
                     </GridPane.margin>
@@ -90,8 +89,8 @@
                         <Font name="Times New Roman" size="40.0" />
                     </font>
                 </Text>
-                <TextArea fx:id="descricao" prefHeight="129.0" prefWidth="211.0" promptText="Descrição" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.rowSpan="3" />
-                <Button fx:id="bAtualiza" onAction="#bAtualizaOnAction" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="281.0" style="-fx-background-color: #dba656; -fx-border-color: #Ffff;" text="Atualizar" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                <TextArea fx:id="descricao" prefHeight="129.0" prefWidth="211.0" promptText="Descrição" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.rowSpan="4" />
+                <Button fx:id="bAtualiza" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#bAtualizaOnAction" prefHeight="25.0" prefWidth="412.0" style="-fx-background-color: #dba656; -fx-border-color: #Ffff;" text="Atualizar" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -105,7 +104,7 @@
                         <Insets bottom="10.0" left="40.0" right="10.0" top="10.0" />
                     </GridPane.margin>
                 </Button>
-                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="*preencha apenas os campos que deseja alterar" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="*preencha apenas os campos que deseja alterar" GridPane.columnIndex="2" GridPane.rowIndex="8">
                     <font>
                         <Font name="Times New Roman" size="12.0" />
                     </font>
@@ -113,6 +112,19 @@
                         <Insets left="40.0" />
                     </GridPane.margin>
                 </Text>
+                <Text fill="WHITE" layoutX="323.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome do novo Herói:" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="40.0" />
+                    </GridPane.margin>
+                </Text>
+                <TextField fx:id="nomeHeroi" layoutX="323.0" layoutY="146.0" promptText="Nome Herói" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                    <GridPane.margin>
+                        <Insets left="40.0" right="10.0" />
+                    </GridPane.margin>
+                </TextField>
             </children>
         </GridPane>
     </children>
