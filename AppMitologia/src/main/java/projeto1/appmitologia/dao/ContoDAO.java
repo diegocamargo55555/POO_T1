@@ -155,4 +155,29 @@ public class ContoDAO implements IConst, IConto{
         close();
         return contos;
     }
+    public Conto buscaPorNome(String nomeConto) throws SQLException {
+        open();
+        sql = "SELECT * FROM conto WHERE nomeConto = ?";
+        statement = connection.prepareStatement(sql);
+        statement.setString(1, nomeConto);
+        result = statement.executeQuery();
+
+        Conto conto = null;
+        if (result.next()) {
+            conto = new Conto();
+            conto.setId(result.getInt("contoId"));
+            conto.setNome(result.getString("nomeConto"));
+            conto.setDescricao(result.getString("descricaoConto"));
+            conto.setLocalizacao(result.getString("localizacaoConto"));
+
+            HeroiDAO heroiDAO = new HeroiDAO();
+            Heroi heroi = heroiDAO.buscaPorId(result.getInt("heroiId"));
+            if (heroi != null) {
+                conto.setNomeHeroi(heroi.getNome());
+            }
+        }
+
+        close();
+        return conto;
+    }
 }

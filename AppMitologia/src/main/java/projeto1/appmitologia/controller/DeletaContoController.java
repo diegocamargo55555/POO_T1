@@ -104,18 +104,37 @@ public class DeletaContoController {
     }
     public void btnDeletarOnAction(ActionEvent actionEvent) throws SQLException{
         ContoDAO contoDAO = new ContoDAO();
-        Alert alert;
         if(!txtId.getText().isEmpty()){
-            try {
-                contoDAO.remove(Integer.parseInt(txtId.getText()));
-            }catch (NumberFormatException e){
-                alert = new Alert(Alert.AlertType.INFORMATION, "Não é possivel realizar a remoção, pois o id inserido não é um número!", ButtonType.OK);
-                alert.setTitle("Insira um número para o Id!");
-                alert.setHeaderText("Informação");
-                alert.show();
-            }
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Deseja deletar o Herói?", ButtonType.CANCEL, ButtonType.OK);
+            alert.setHeaderText("Informação");
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    try {
+                            Conto conto = contoDAO.buscaPorId(Integer.parseInt(txtId.getText()));
+                            if(conto != null){
+                                contoDAO.remove(Integer.parseInt(txtId.getText()));
+                                Alert alertConfirmacao = new Alert(Alert.AlertType.CONFIRMATION, "Conto deletado com sucesso!", ButtonType.OK);
+                                alert.show();
+                            } else{
+                                Alert alertContoNExistente = new Alert(Alert.AlertType.WARNING, "Conto não existe!", ButtonType.OK);
+                                alertContoNExistente.show();
+                            }
+                    }catch (SQLException e1){
+                            Alert errorAlert = new Alert(Alert.AlertType.ERROR, "Erro ao deletar conto!", ButtonType.OK);
+                            errorAlert.setTitle("Erro");
+                            errorAlert.setHeaderText("Informação");
+                            errorAlert.show();
+                            e1.printStackTrace();
+                    } catch (NumberFormatException e) {
+                        Alert alertId = new Alert(Alert.AlertType.INFORMATION, "Não é possivel realizar a remoção, pois o id inserido não é um número!", ButtonType.OK);
+                        alertId.setTitle("Insira um número para o Id!");
+                        alertId.setHeaderText("Informação");
+                        alertId.show();
+                    }
+                }
+            });
         } else{
-            alert = new Alert(Alert.AlertType.INFORMATION, "Insira um id para deletar o conto!", ButtonType.OK);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Insira um id para deletar o conto!", ButtonType.OK);
             alert.setTitle("Insira um Id!");
             alert.setHeaderText("Informação");
             alert.show();
