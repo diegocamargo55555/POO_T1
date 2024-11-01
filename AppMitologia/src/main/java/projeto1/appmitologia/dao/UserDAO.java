@@ -21,7 +21,7 @@ public class UserDAO implements IConst {
     }
     public void insere(User user) throws SQLException {
         open();
-        sql = "INSERT INTO user(UserName, Password) VALUES(?,?)";
+        sql = "INSERT INTO usuario(userName, userPassword) VALUES(?,?)";
         statement = connection.prepareStatement(sql);
         statement.setString(1, user.getUserName());
         statement.setString(2, user.getPassword());

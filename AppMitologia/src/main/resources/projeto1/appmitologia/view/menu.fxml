@@ -77,7 +77,7 @@
                   <Insets bottom="100.0" left="20.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="signup" mnemonicParsing="false" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: #2D71AA;" text="Cadastrar" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button fx:id="signup" mnemonicParsing="false" onAction="#cadastroUserOnAction" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: #2D71AA;" text="Cadastrar" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="15.0" />
                </font>

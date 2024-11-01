@@ -27,15 +27,15 @@ public class CadastroUserController {
         user.setUserName(nome.getText());
         user.setPassword(pass.getText());
 
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Deseja inserir o Conto?", ButtonType.CANCEL, ButtonType.OK);
-        alert.setTitle("Conto pode ser cadastrado!");
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Deseja inserir o Usuario?", ButtonType.CANCEL, ButtonType.OK);
+        alert.setTitle("Usuario pode ser cadastrado!");
         alert.setHeaderText("Informação");
 
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                UserDAO userdao = new UserDAO();
+                UserDAO userDAO = new UserDAO();
                 try {
-                    userdao.insere(user);
+                    userDAO.insere(user);
                     Alert successAlert = new Alert(Alert.AlertType.INFORMATION, "Conto cadastrado com sucesso!", ButtonType.OK);
                     successAlert.setTitle("Sucesso");
                     successAlert.setHeaderText("Informação");

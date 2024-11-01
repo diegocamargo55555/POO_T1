@@ -3,6 +3,7 @@ package projeto1.appmitologia.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.*;
 import javafx.stage.Stage;
@@ -19,6 +20,10 @@ public class MenuController {
     @FXML
     private MenuItem incluiHeroi, incluiConto, deletaHeroi, deletaConto,
             consultaHeroi, consultaConto, atualizaHeroi, atualizaConto;
+
+    @FXML
+    private Button signup;
+
 
     @FXML
     void incluiHeroiOnAction(ActionEvent event) {
@@ -147,5 +152,21 @@ public class MenuController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void cadastroUserOnAction(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto1/appmitologia/view/cadastroUser.fxml"));
+            Parent root = loader.load();
+            Stage newStage = new Stage();
+            Scene newScene = new Scene(root);
+            newStage.setScene(newScene);
+            newStage.setResizable(false);
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

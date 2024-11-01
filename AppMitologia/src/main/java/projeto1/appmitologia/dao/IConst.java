@@ -5,3 +5,4 @@ public interface IConst {
     public static final String usuario = "postgres";
     public static final String senha = "lolseek005";
 }
+
