@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Text?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
-      style="-fx-background-image: url(https://i.ibb.co/Jz4QYTs/fundo2.png); -fx-background-size: 100% 100%;" xmlns="http://javafx.com/javafx/22"
+      style="-fx-background-image: url('https://i.ibb.co/YNnnS6w/fundo3.jpg'); -fx-background-size: 100% 100%;" xmlns="http://javafx.com/javafx/22"
       xmlns:fx="http://javafx.com/fxml/1"  fx:controller="projeto1.appmitologia.controller.IncluiHeroiController">
     <children>
         <GridPane prefHeight="312.0" prefWidth="476.0">

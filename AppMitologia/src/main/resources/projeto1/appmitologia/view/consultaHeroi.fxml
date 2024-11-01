@@ -27,7 +27,7 @@
             <RowConstraints maxHeight="106.60002441406249" minHeight="10.0" prefHeight="78.19999999999999" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView fx:id="tblHeroi" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="522.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <TableView fx:id="tblHeroi" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="180.0" prefWidth="526.0" translateZ="72.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
               <columns>
                 <TableColumn fx:id="idColuna" prefWidth="75.0" text="idHeroi" />
                 <TableColumn fx:id="nomeColuna" prefWidth="75.0" text="nomeHeroi" />
@@ -37,6 +37,9 @@
                <GridPane.margin>
                   <Insets left="40.0" right="40.0" />
                </GridPane.margin>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
             <Text fill="#fffffd" strokeType="OUTSIDE" strokeWidth="0.0" text="Consulta de Heróis" textAlignment="CENTER" wrappingWidth="602.5804142951965">
                <font>

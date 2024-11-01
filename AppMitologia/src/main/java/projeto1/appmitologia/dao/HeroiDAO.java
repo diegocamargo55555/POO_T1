@@ -120,8 +120,8 @@ public class HeroiDAO implements IHeroi, IConst{
             }catch (IllegalArgumentException e){
                 heroi.setImagemFisica(new ImageView(new Image("https://i.ibb.co/9hpB2Vj/notFound.png")));
             }
-            heroi.getImagem().setFitWidth(70);
             heroi.getImagem().setFitHeight(70);
+            heroi.getImagem().setPreserveRatio(true);
             herois.add(heroi);
         }
         close();
