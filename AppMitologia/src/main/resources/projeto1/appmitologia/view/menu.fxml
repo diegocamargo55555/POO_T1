@@ -85,11 +85,6 @@
                   <Insets bottom="20.0" left="20.0" />
                </GridPane.margin>
             </Button>
-            <TextField fx:id="senha" layoutX="80.0" layoutY="154.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.6" prefWidth="159.2" promptText="Usuário" style="-fx-background-color: #E5F3FF;" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </TextField>
          </children>
       </GridPane>
    </children>

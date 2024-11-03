@@ -34,15 +34,10 @@ public class MenuController {
     private Parent root;
 
     @FXML
-    private TextField UserName, senha;
+    private TextField UserName;
     private Button login;
     @FXML
     private PasswordField passfield;
-    @FXML
-    private JPasswordField pass_senha;
-
-    @FXML private VBox VbomMenu;
-
     @FXML
     private MenuItem incluiHeroi, incluiConto, deletaHeroi, deletaConto,
             consultaHeroi, consultaConto, atualizaHeroi, atualizaConto;
