@@ -1,0 +1,24 @@
+create database mitologiaapp
+
+create table heroi(
+	heroiId serial primary key,
+	nomeHeroi varchar(60) NOT NULL,
+	descricaoHeroi text,
+	imagemHeroi text
+);
+
+create table conto(
+	contoId serial primary key,
+	nomeConto varchar(60) NOT NULL,
+	descricaoConto text,
+	localizacaoConto varchar(60),
+	heroiId serial,
+	CONSTRAINT FK_HERO_CONT FOREIGN KEY(heroiId) references heroi(heroiId) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+create table usuario(
+	UserID varchar(60) primary key,
+	senha varchar(60) NOT NULL,
+	heroiId serial references heroi(heroiId),
+	contoId serial references conto(contoId)
+);
