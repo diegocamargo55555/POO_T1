@@ -21,10 +21,6 @@ public class IncluiContoController {
     @FXML
     private void bCadastroOnAction(ActionEvent event) {
         Conto conto = new Conto();
-        conto.setNome(nome.getText());
-        conto.setDescricao(descricao.getText());
-        conto.setLocalizacao(localizacao.getText());
-        conto.setNomeHeroi(nomeHeroi.getText());
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Deseja inserir o Conto?", ButtonType.CANCEL, ButtonType.OK);
         alert.setTitle("Conto pode ser cadastrado!");

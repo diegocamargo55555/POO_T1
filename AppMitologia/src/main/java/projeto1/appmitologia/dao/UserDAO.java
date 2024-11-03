@@ -1,11 +1,13 @@
 package projeto1.appmitologia.dao;
 
+import projeto1.appmitologia.model.Heroi;
 import projeto1.appmitologia.model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class UserDAO implements IConst {
 
@@ -52,6 +54,26 @@ public class UserDAO implements IConst {
             e.printStackTrace();
             return false;
         }
+
     }
+
+    public void favoritarHeroi(Heroi heroi) throws SQLException {
+        open();
+        sql = "UPDATE usuario WHERE UserID =? SET heroiId = ?";
+
+/*
+        Scanner myReader = new Scanner(session_cookie.txt);
+        while (myReader.hasNextLine()) {
+            String data = myReader.nextLine();
+            System.out.println(data);
+        }
+        myReader.close();*/
+
+        statement.setInt(1, heroi.getId());
+        statement.setInt(2, heroi.getId());
+        statement.executeUpdate();
+        close();
+    }
+
 
 }

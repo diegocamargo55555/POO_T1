@@ -3,8 +3,17 @@ package projeto1.appmitologia.model;
 public class User {
     private String userName;
     private String password;
+    private String heroiId;
 
     public User() {}
+
+    public String getHeroiId() {
+        return heroiId;
+    }
+
+    public void setHeroiId(String heroiId) {
+        this.heroiId = heroiId;
+    }
 
     public User(String userName, String password) {
         this.password = password;

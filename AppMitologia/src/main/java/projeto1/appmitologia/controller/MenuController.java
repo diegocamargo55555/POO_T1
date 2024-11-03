@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import projeto1.appmitologia.dao.UserDAO;
 import javax.swing.*;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -38,6 +40,17 @@ public class MenuController {
 
         if (userDAO.authenticateUser(username, pass)) {
             JOptionPane.showMessageDialog(null, "Login Successful");
+
+            try {
+                FileWriter myWriter = new FileWriter("session_cookie.txt");
+                myWriter.write(username);
+                myWriter.close();
+                System.out.println("Successfully wrote to the file.");
+
+            } catch (IOException e) {
+                System.out.println("\n\n\n\n An error occurred. na hora de escrever os COOKIES \n\n\n\n");
+                e.printStackTrace();
+            }
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto1/appmitologia/view/menuLogado.fxml"));
                 Parent root = loader.load();
@@ -46,9 +59,6 @@ public class MenuController {
                 newStage.setScene(newScene);
                 newStage.setResizable(false);
                 newStage.show();
-                Stage stage = (Stage) login.getScene().getWindow();
-                stage.close();
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -56,6 +66,8 @@ public class MenuController {
             JOptionPane.showMessageDialog(null, "Invalid Credentials");
         }
     }
+
+
 
     @FXML
     void incluiHeroiOnAction(ActionEvent event) {

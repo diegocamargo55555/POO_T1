@@ -40,7 +40,6 @@ public class AtualizaHeroiController {
         }
 
         HeroiDAO heroiDAO = new HeroiDAO();
-
         try {
             Heroi heroiExistente = heroiDAO.buscaPorId(idHeroi);
             if (heroiExistente == null) {
@@ -50,7 +49,6 @@ public class AtualizaHeroiController {
                 alert.show();
                 return;
             }
-
             if (!nome.getText().isEmpty()) {
                 heroiExistente.setNome(nome.getText());
             }

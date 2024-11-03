@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
+    public static int Session_Cookies = 0;
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader principal = new FXMLLoader(getClass().getResource("/projeto1/appmitologia/view/menu.fxml"));
@@ -22,7 +24,5 @@ public class Main extends Application {
 
     }
 
-    public static void main(String[] args)  {
-        launch(args);
-    }
+    public static void main(String[] args)  {launch(args);}
 }
