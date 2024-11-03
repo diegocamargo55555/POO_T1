@@ -1,21 +1,29 @@
 package projeto1.appmitologia.controller;
 
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.*;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.controlsfx.control.SegmentedBar;
 import projeto1.appmitologia.dao.UserDAO;
 import projeto1.appmitologia.model.Session;
 
 import javax.swing.*;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Arrays;
+
 
 public class MenuController {
     @FXML
@@ -28,22 +36,36 @@ public class MenuController {
     @FXML
     private TextField UserName, senha;
     private Button login;
+    @FXML
+    private PasswordField passfield;
+    @FXML
+    private JPasswordField pass_senha;
+
+    @FXML private VBox VbomMenu;
 
     @FXML
     private MenuItem incluiHeroi, incluiConto, deletaHeroi, deletaConto,
             consultaHeroi, consultaConto, atualizaHeroi, atualizaConto;
 
+
+
     @FXML
     void loginOnAction(ActionEvent event) throws SQLException {
 
+
         UserDAO userDAO = new UserDAO();
         String username = UserName.getText();
-        String pass = senha.getText();
+        System.out.println("\npasssenha " + passfield.getText());
+
+        String pass = passfield.getText();
 
         if (userDAO.authenticateUser(username, pass)) {
             JOptionPane.showMessageDialog(null, "Login Successful");
-
             Session.cookie = username;
+
+
+            ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+
 
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto1/appmitologia/view/menuLogado.fxml"));
@@ -53,6 +75,7 @@ public class MenuController {
                 newStage.setScene(newScene);
                 newStage.setResizable(false);
                 newStage.show();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -60,6 +83,8 @@ public class MenuController {
             JOptionPane.showMessageDialog(null, "Invalid Credentials");
         }
     }
+
+
 
 
 

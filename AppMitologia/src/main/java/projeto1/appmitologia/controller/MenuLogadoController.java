@@ -91,12 +91,27 @@ public class MenuLogadoController extends MenuController {
         }
     }
 
-
-
-
-
-
+    @FXML
+    void LogoutOnAction(ActionEvent event) throws IOException {
+        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+        Stage stage = new Stage();
+        FXMLLoader principal = new FXMLLoader(getClass().getResource("/projeto1/appmitologia/view/menu.fxml"));
+        Parent root = principal.load();
+        Scene scene = new Scene(root);
+        stage.setTitle("Herois");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
 }
+
+
+
+
+
+
+
+
 
 
 
