@@ -67,6 +67,7 @@
                </GridPane.margin></Button>
             <Button fx:id="favConto" mnemonicParsing="false" onAction="#ContoFavOnAction" text="Conto Favorito" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Button fx:id="selectContoFav" mnemonicParsing="false" onAction="#SelectContoFavOnAction" text="selecionar Conto favorito" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="DeletUser" mnemonicParsing="false" onAction="#DeletUserOnAction" text="Deletar Usuario" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>

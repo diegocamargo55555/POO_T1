@@ -76,6 +76,22 @@ public class MenuLogadoController extends MenuController {
         }
     }
 
+    @FXML
+    void DeletUserOnAction(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto1/appmitologia/view/deletUser.fxml"));
+            Parent root = loader.load();
+            Stage newStage = new Stage();
+            Scene newScene = new Scene(root);
+            newStage.setScene(newScene);
+            newStage.setResizable(false);
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 
 
