@@ -36,19 +36,19 @@ public class CadastroUserController {
                 UserDAO userDAO = new UserDAO();
                 try {
                     userDAO.insere(user);
-                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION, "Conto cadastrado com sucesso!", ButtonType.OK);
+                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION, "usuario cadastrado com sucesso!", ButtonType.OK);
                     successAlert.setTitle("Sucesso");
                     successAlert.setHeaderText("Informação");
                     successAlert.show();
                 } catch (SQLException e1) {
-                    Alert errorAlert = new Alert(Alert.AlertType.ERROR, "Erro ao cadastrar conto!", ButtonType.OK);
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR, "Erro ao cadastrar!", ButtonType.OK);
                     errorAlert.setTitle("Erro");
                     errorAlert.setHeaderText("Informação");
                     errorAlert.show();
                     e1.printStackTrace();
                 }
             } else {
-                Alert cancelAlert = new Alert(Alert.AlertType.INFORMATION, "Cadastro de conto cancelado.", ButtonType.OK);
+                Alert cancelAlert = new Alert(Alert.AlertType.INFORMATION, "Cadastro de usuario cancelado.", ButtonType.OK);
                 cancelAlert.setTitle("Cancelado");
                 cancelAlert.setHeaderText("Informação");
                 cancelAlert.show();

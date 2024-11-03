@@ -48,7 +48,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.6" prefWidth="159.2" promptText="Usuário" style="-fx-background-color: #E5F3FF;" GridPane.rowIndex="1">
+            <TextField fx:id="UserName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.6" prefWidth="159.2" promptText="Usuário" style="-fx-background-color: #E5F3FF;" GridPane.rowIndex="1">
                <font>
                   <Font size="15.0" />
                </font>
@@ -69,7 +69,7 @@
                   <Font name="Times New Roman" size="50.0" />
                </font>
             </Text>
-            <Button fx:id="login" mnemonicParsing="false" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: #2D71AA;" text="Entrar" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button fx:id="login" mnemonicParsing="false" onAction="#loginOnAction" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: #2D71AA;" text="Entrar" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="15.0" />
                </font>
@@ -85,6 +85,11 @@
                   <Insets bottom="20.0" left="20.0" />
                </GridPane.margin>
             </Button>
+            <TextField fx:id="senha" layoutX="80.0" layoutY="154.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.6" prefWidth="159.2" promptText="Usuário" style="-fx-background-color: #E5F3FF;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
          </children>
       </GridPane>
    </children>

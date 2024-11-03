@@ -6,8 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.*;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import projeto1.appmitologia.dao.UserDAO;
+import javax.swing.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class MenuController {
     @FXML
@@ -18,12 +22,40 @@ public class MenuController {
     private Parent root;
 
     @FXML
+    private TextField UserName, senha;
+    private Button login;
+
+    @FXML
     private MenuItem incluiHeroi, incluiConto, deletaHeroi, deletaConto,
             consultaHeroi, consultaConto, atualizaHeroi, atualizaConto;
 
     @FXML
-    private Button signup;
+    void loginOnAction(ActionEvent event) throws SQLException {
 
+        UserDAO userDAO = new UserDAO();
+        String username = UserName.getText();
+        String pass = senha.getText();
+
+        if (userDAO.authenticateUser(username, pass)) {
+            JOptionPane.showMessageDialog(null, "Login Successful");
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto1/appmitologia/view/menuLogado.fxml"));
+                Parent root = loader.load();
+                Stage newStage = new Stage();
+                Scene newScene = new Scene(root);
+                newStage.setScene(newScene);
+                newStage.setResizable(false);
+                newStage.show();
+                Stage stage = (Stage) login.getScene().getWindow();
+                stage.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid Credentials");
+        }
+    }
 
     @FXML
     void incluiHeroiOnAction(ActionEvent event) {
@@ -167,6 +199,4 @@ public class MenuController {
             e.printStackTrace();
         }
     }
-
-
 }
