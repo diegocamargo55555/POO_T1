@@ -9,6 +9,8 @@ import javafx.scene.*;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import projeto1.appmitologia.dao.UserDAO;
+import projeto1.appmitologia.model.Session;
+
 import javax.swing.*;
 import java.io.File;
 import java.io.FileWriter;
@@ -41,16 +43,8 @@ public class MenuController {
         if (userDAO.authenticateUser(username, pass)) {
             JOptionPane.showMessageDialog(null, "Login Successful");
 
-            try {
-                FileWriter myWriter = new FileWriter("session_cookie.txt");
-                myWriter.write(username);
-                myWriter.close();
-                System.out.println("Successfully wrote to the file.");
+            Session.cookie = username;
 
-            } catch (IOException e) {
-                System.out.println("\n\n\n\n An error occurred. na hora de escrever os COOKIES \n\n\n\n");
-                e.printStackTrace();
-            }
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto1/appmitologia/view/menuLogado.fxml"));
                 Parent root = loader.load();

@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import projeto1.appmitologia.dao.HeroiDAO;
+import projeto1.appmitologia.dao.UserDAO;
 import projeto1.appmitologia.model.Heroi;
 
 import java.sql.SQLException;
@@ -54,6 +55,7 @@ public class FavHeroiIncluirController {
             return;
         }
         HeroiDAO heroiDAO = new HeroiDAO();
+        UserDAO userDAO = new UserDAO();
         try {
             Heroi heroiExistente = heroiDAO.buscaPorId(idHeroi);
             if (heroiExistente == null) {
@@ -64,9 +66,6 @@ public class FavHeroiIncluirController {
                 return;
             }
 
-            if (!idHeroiField.getText().isEmpty()) {
-                heroiExistente.setNome(idHeroiField.getText());
-            }
 
             Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION, "Deseja selecionar o Herói?", ButtonType.CANCEL, ButtonType.OK);
             confirmAlert.setTitle("Confirmação de Atualização");
@@ -75,7 +74,7 @@ public class FavHeroiIncluirController {
             confirmAlert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
                     try {
-                        heroiDAO.atualiza(heroiExistente);
+                        userDAO.favoritarHeroi(idHeroi);
                         Alert successAlert = new Alert(Alert.AlertType.INFORMATION, "Herói atualizado com sucesso!", ButtonType.OK);
                         successAlert.setTitle("Sucesso");
                         successAlert.setHeaderText("Informação");

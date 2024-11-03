@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
-    public static int Session_Cookies = 0;
 
     @Override
     public void start(Stage stage) throws IOException {

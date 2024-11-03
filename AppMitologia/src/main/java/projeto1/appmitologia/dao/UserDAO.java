@@ -1,25 +1,24 @@
 package projeto1.appmitologia.dao;
 
 import projeto1.appmitologia.model.Heroi;
+import projeto1.appmitologia.model.Session;
 import projeto1.appmitologia.model.User;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 public class UserDAO implements IConst {
 
-    private String sql;
-    private Connection connection;
-    private PreparedStatement statement;
-    private ResultSet result;
+    private static String sql;
+    private static Connection connection;
+    private static PreparedStatement statement;
+    private static ResultSet result;
 
-    public void open() throws SQLException {
+    public static void open() throws SQLException {
         connection = Conexao.getConexao(Conexao.stringDeConexao, Conexao.usuario, Conexao.senha);
     }
-    public void close() throws SQLException{
+    public static void close() throws SQLException{
         connection.close();
     }
     public void insere(User user) throws SQLException {
@@ -43,6 +42,7 @@ public class UserDAO implements IConst {
 
     public boolean authenticateUser(String username, String password) throws SQLException {
         String query = "SELECT * FROM usuario WHERE UserID =? AND senha = ?";
+
         open();
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, username);
@@ -54,26 +54,39 @@ public class UserDAO implements IConst {
             e.printStackTrace();
             return false;
         }
-
     }
 
-    public void favoritarHeroi(Heroi heroi) throws SQLException {
+    public void favoritarHeroi(int IdHeroi) throws SQLException {
         open();
-        sql = "UPDATE usuario WHERE UserID =? SET heroiId = ?";
-
-/*
-        Scanner myReader = new Scanner(session_cookie.txt);
-        while (myReader.hasNextLine()) {
-            String data = myReader.nextLine();
-            System.out.println(data);
-        }
-        myReader.close();*/
-
-        statement.setInt(1, heroi.getId());
-        statement.setInt(2, heroi.getId());
+        sql = "UPDATE usuario SET heroiid = ? WHERE userid = ?";
+        statement = connection.prepareStatement(sql);
+        statement.setInt(1, IdHeroi);
+        statement.setString(2, Session.cookie);
         statement.executeUpdate();
         close();
     }
+
+    public static int getHeroiFav() throws SQLException {
+        open();
+        sql = "select heroiid from usuario WHERE userid = ?";
+        statement = connection.prepareStatement(sql);
+        statement.setString(1, Session.cookie);
+        result = statement.executeQuery();
+        Heroi h = new Heroi();
+
+        if (result.next()) {
+            h.setId(result.getInt("heroiId"));
+        }
+        close();
+        String resutString = result.toString();
+        System.out.println("\na: " + resutString );
+
+        int resultINT = h.getId();
+        return resultINT;
+    }
+
+
+
 
 
 }
