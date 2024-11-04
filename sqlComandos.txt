@@ -19,6 +19,6 @@ create table conto(
 create table usuario(
 	UserID varchar(60) primary key,
 	senha varchar(60) NOT NULL,
-	heroiId serial references heroi(heroiId),
-	contoId serial references conto(contoId)
+	heroiId INTEGER references heroi(heroiId),
+	contoId INTEGER references conto(contoId)
 );
