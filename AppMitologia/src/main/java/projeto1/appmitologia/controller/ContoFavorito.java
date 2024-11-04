@@ -38,7 +38,6 @@ public class ContoFavorito {
     public ObservableList<Conto> getContos() throws SQLException {
         int contoID = UserDAO.getContoFav();
 
-        System.out.println("contoID: " + contoID);
 
         ContoDAO contoDAO = new ContoDAO();
         ObservableList<Conto> conto = FXCollections.observableArrayList(contoDAO.buscaPorId(contoID));

@@ -89,9 +89,6 @@ public class UserDAO implements IConst {
             h.setId(result.getInt("heroiId"));
         }
         close();
-        String resutString = result.toString();
-        System.out.println("\na: " + resutString );
-
         int resultINT = h.getId();
         return resultINT;
     }

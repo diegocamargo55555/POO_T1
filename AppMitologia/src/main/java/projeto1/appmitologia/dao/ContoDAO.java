@@ -138,7 +138,6 @@ public class ContoDAO implements IConst, IConto{
         open();
         sql = "SELECT * FROM conto WHERE nomeConto ~* '" + nomeConto + "'";
         statement = connection.prepareStatement(sql);
-        System.out.println(sql);
         result = statement.executeQuery();
         ArrayList<Conto> contos = new ArrayList<>();
         while (result.next()) {
