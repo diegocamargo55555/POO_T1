@@ -9,7 +9,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import projeto1.appmitologia.dao.ContoDAO;
+import projeto1.appmitologia.dao.HeroiDAO;
+import projeto1.appmitologia.dao.UserDAO;
 import projeto1.appmitologia.model.Conto;
+import projeto1.appmitologia.model.Heroi;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,7 +20,7 @@ import java.util.ArrayList;
 public class FavContoIncluirController {
 
     @FXML
-    private Button btnConsulta;
+    private Button favoritar;
     @FXML
     private TableView<Conto> tblConto;
     @FXML
@@ -35,37 +38,73 @@ public class FavContoIncluirController {
     @FXML
     private TextField txtId;
 
-    public void btnDeletarOnAction(ActionEvent actionEvent) throws SQLException{
-        Conto conto = new Conto();
-
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Deseja inserir o Conto?", ButtonType.CANCEL, ButtonType.OK);
-        alert.setTitle("Conto pode ser cadastrado!");
-        alert.setHeaderText("Informação");
-
-        alert.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.OK) {
-                ContoDAO contoDAO = new ContoDAO();
-                try {
-                    contoDAO.insere(conto);
-                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION, "Conto cadastrado com sucesso!", ButtonType.OK);
-                    successAlert.setTitle("Sucesso");
-                    successAlert.setHeaderText("Informação");
-                    successAlert.show();
-                } catch (SQLException e1) {
-                    Alert errorAlert = new Alert(Alert.AlertType.ERROR, "Erro ao cadastrar conto!", ButtonType.OK);
-                    errorAlert.setTitle("Erro");
-                    errorAlert.setHeaderText("Informação");
-                    errorAlert.show();
-                    e1.printStackTrace();
-                }
-            } else {
-                Alert cancelAlert = new Alert(Alert.AlertType.INFORMATION, "Cadastro de conto cancelado.", ButtonType.OK);
-                cancelAlert.setTitle("Cancelado");
-                cancelAlert.setHeaderText("Informação");
-                cancelAlert.show();
+    public void favoritarOnAction(ActionEvent actionEvent) throws SQLException{
+        int idConto;
+        try {
+            idConto = Integer.parseInt(txtId.getText());
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "ID do herói deve ser um número.", ButtonType.OK);
+            alert.setTitle("Erro no ID");
+            alert.setHeaderText("Atenção");
+            alert.show();
+            return;
+        }
+        ContoDAO contoDAO = new ContoDAO();
+        UserDAO userDAO = new UserDAO();
+        try {
+            Conto contoExistente =contoDAO.buscaPorId(idConto);
+            if (contoExistente == null) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Conto com o ID " + idConto + " não encontrado.", ButtonType.OK);
+                alert.setTitle("Conto não encontrado");
+                alert.setHeaderText("Atenção");
+                alert.show();
+                return;
             }
-        });
+
+
+            Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION, "Deseja selecionar o Conto?", ButtonType.CANCEL, ButtonType.OK);
+            confirmAlert.setTitle("Confirmação de Atualização");
+            confirmAlert.setHeaderText("Confirme a atualização");
+
+            confirmAlert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    try {
+                        userDAO.favoritarConto(idConto);
+                        Alert successAlert = new Alert(Alert.AlertType.INFORMATION, "Conto atualizado com sucesso!", ButtonType.OK);
+                        successAlert.setTitle("Sucesso");
+                        successAlert.setHeaderText("Informação");
+                        successAlert.show();
+                    } catch (SQLException e) {
+                        Alert errorAlert = new Alert(Alert.AlertType.ERROR, "Erro ao atualizar Conto!", ButtonType.OK);
+                        errorAlert.setTitle("Erro");
+                        errorAlert.setHeaderText("Informação");
+                        errorAlert.show();
+                        e.printStackTrace();
+                    }
+                } else {
+                    Alert cancelAlert = new Alert(Alert.AlertType.INFORMATION, "Atualização do Conto cancelada.", ButtonType.OK);
+                    cancelAlert.setTitle("Cancelado");
+                    cancelAlert.setHeaderText("Informação");
+                    cancelAlert.show();
+                }
+            });
+        } catch (SQLException e) {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR, "Erro ao buscar Conto!", ButtonType.OK);
+            errorAlert.setTitle("Erro");
+            errorAlert.setHeaderText("Informação");
+            errorAlert.show();
+            e.printStackTrace();
+        }
     }
+
+
+
+
+
+
+
+
+
 
 
 

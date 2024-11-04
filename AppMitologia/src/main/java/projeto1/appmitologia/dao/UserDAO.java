@@ -31,11 +31,11 @@ public class UserDAO implements IConst {
         close();
     }
 
-    public void remove(User user) throws SQLException {
+    public static void remove(String id) throws SQLException {
         open();
         sql = "DELETE FROM usuario WHERE UserID = ?";
         statement = connection.prepareStatement(sql);
-        statement.setString(1, user.getUserName());
+        statement.setString(1, id);
         statement.executeUpdate();
         close();
     }
@@ -66,6 +66,17 @@ public class UserDAO implements IConst {
         close();
     }
 
+    public void favoritarConto(int idConto) throws SQLException {
+        open();
+        sql = "UPDATE usuario SET contoid = ? WHERE userid = ?";
+        statement = connection.prepareStatement(sql);
+        statement.setInt(1, idConto);
+        statement.setString(2, Session.cookie);
+        statement.executeUpdate();
+        close();
+    }
+
+
     public static int getHeroiFav() throws SQLException {
         open();
         sql = "select heroiid from usuario WHERE userid = ?";
@@ -84,6 +95,24 @@ public class UserDAO implements IConst {
         int resultINT = h.getId();
         return resultINT;
     }
+
+    public static int getContoFav() throws SQLException {
+        open();
+        sql = "select contoid from usuario WHERE userid = ?";
+        statement = connection.prepareStatement(sql);
+        statement.setString(1, Session.cookie);
+        result = statement.executeQuery();
+        Heroi h = new Heroi();
+
+        if (result.next()) {
+            h.setId(result.getInt("contoid"));
+        }
+        close();
+
+        int resultINT = h.getId();
+        return resultINT;
+    }
+
 
 
 

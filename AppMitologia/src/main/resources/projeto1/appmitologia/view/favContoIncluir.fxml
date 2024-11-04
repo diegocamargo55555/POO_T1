@@ -45,7 +45,7 @@
                   <Font name="Times New Roman" size="16.0" />
                </font>
             </Text>
-            <Button fx:id="btnDeletar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnDeletarOnAction" prefHeight="27.0" prefWidth="426.0" style="-fx-border-color: ffff; -fx-background-color: dba656;" text="FAVORITAR" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
+            <Button fx:id="favoritar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#favoritarOnAction" prefHeight="27.0" prefWidth="426.0" style="-fx-border-color: ffff; -fx-background-color: dba656;" text="FAVORITAR" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
