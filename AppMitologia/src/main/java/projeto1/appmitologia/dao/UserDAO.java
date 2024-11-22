@@ -61,7 +61,7 @@ public class UserDAO implements IConst {
         sql = "UPDATE usuario SET heroiid = ? WHERE userid = ?";
         statement = connection.prepareStatement(sql);
         statement.setInt(1, IdHeroi);
-        statement.setString(2, Session.cookie);
+        statement.setString(2, Session.getCookie());
         statement.executeUpdate();
         close();
     }
@@ -71,7 +71,7 @@ public class UserDAO implements IConst {
         sql = "UPDATE usuario SET contoid = ? WHERE userid = ?";
         statement = connection.prepareStatement(sql);
         statement.setInt(1, idConto);
-        statement.setString(2, Session.cookie);
+        statement.setString(2, Session.getCookie());
         statement.executeUpdate();
         close();
     }
@@ -81,7 +81,7 @@ public class UserDAO implements IConst {
         open();
         sql = "select heroiid from usuario WHERE userid = ?";
         statement = connection.prepareStatement(sql);
-        statement.setString(1, Session.cookie);
+        statement.setString(1, Session.getCookie());
         result = statement.executeQuery();
         Heroi h = new Heroi();
 
@@ -97,7 +97,7 @@ public class UserDAO implements IConst {
         open();
         sql = "select contoid from usuario WHERE userid = ?";
         statement = connection.prepareStatement(sql);
-        statement.setString(1, Session.cookie);
+        statement.setString(1, Session.getCookie());
         result = statement.executeQuery();
         Heroi h = new Heroi();
 

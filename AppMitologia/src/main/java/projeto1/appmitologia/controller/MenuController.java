@@ -56,12 +56,8 @@ public class MenuController {
 
         if (userDAO.authenticateUser(username, pass)) {
             JOptionPane.showMessageDialog(null, "Login Successful");
-            Session.cookie = username;
-
-
+            Session.setCookie(username);
             ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
-
-
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto1/appmitologia/view/menuLogado.fxml"));
                 Parent root = loader.load();
@@ -78,10 +74,6 @@ public class MenuController {
             JOptionPane.showMessageDialog(null, "Invalid Credentials");
         }
     }
-
-
-
-
 
     @FXML
     void incluiHeroiOnAction(ActionEvent event) {

@@ -30,8 +30,6 @@ public class MenuLogadoController extends MenuController {
         }
     }
 
-
-
     @FXML
     void HeroiFavOnAction(ActionEvent event) {
         try {
