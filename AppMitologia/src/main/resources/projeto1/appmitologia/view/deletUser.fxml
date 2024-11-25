@@ -6,7 +6,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -43,33 +42,24 @@
          <rowConstraints>
             <RowConstraints maxHeight="117.60000610351562" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="94.20000114440919" minHeight="0.0" prefHeight="6.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="94.20000114440919" minHeight="0.0" prefHeight="6.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="94.20000114440919" minHeight="0.0" prefHeight="6.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="129.20000000000002" minHeight="10.0" prefHeight="43.19999389648436" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="172.8000061035156" minHeight="0.0" prefHeight="6.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="156.0000518798828" minHeight="10.0" prefHeight="43.19999389648436" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="143.80003967285154" minHeight="0.0" prefHeight="42.399993896484375" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TextField fx:id="UserName" promptText="nome de login" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="10.0" right="10.0" />
-               </GridPane.margin>
-            </TextField>
             <Text fill="#fffffd" strokeType="OUTSIDE" strokeWidth="0.0" text="Excluir Usuário" textAlignment="CENTER" wrappingWidth="480.1803894042969">
                <font>
                   <Font name="Times New Roman" size="29.0" />
                </font>
             </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insira o Nome do Usuário que desejas deletar:" textAlignment="CENTER" wrappingWidth="481.1930847167969" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Times New Roman" size="18.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="insira a Senha para confirmar a exclusão" textAlignment="CENTER" wrappingWidth="480.32460021972656" GridPane.rowIndex="3">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="insira a Senha para confirmar a exclusão" textAlignment="CENTER" wrappingWidth="480.32460021972656" GridPane.rowIndex="4">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Button fx:id="btnDeletUser" mnemonicParsing="false" onAction="#DeletUserOnAction" prefHeight="26.0" prefWidth="486.0" style="-fx-border-color: ffff; -fx-background-color: dba656;" text="Deletar Usuário" textFill="WHITE" GridPane.rowIndex="5">
+            <Button fx:id="btnDeletUser" mnemonicParsing="false" onAction="#DeletUserOnAction" prefHeight="26.0" prefWidth="486.0" style="-fx-border-color: ffff; -fx-background-color: dba656;" text="Deletar Usuário" textFill="WHITE" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
@@ -79,6 +69,11 @@
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
             </PasswordField>
+            <Text fill="#fffffd" strokeType="OUTSIDE" strokeWidth="0.0" text="Digite sua senha para excluir o usuario" textAlignment="CENTER" wrappingWidth="480.1803894042969" GridPane.rowIndex="2">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
          </children>
          <VBox.margin>
             <Insets left="60.0" right="60.0" />
