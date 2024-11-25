@@ -6,6 +6,7 @@ module projeto1.appmitologia {
     requires org.kordamp.bootstrapfx.core;
     requires transitive java.sql;
     requires java.desktop;
+    requires javafx.graphics;
 
     opens projeto1.appmitologia.controller to javafx.fxml;
     exports projeto1.appmitologia.controller;

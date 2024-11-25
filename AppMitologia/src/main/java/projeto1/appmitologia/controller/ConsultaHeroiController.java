@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConsultaHeroiController {
+public class ConsultaHeroiController extends Tabelas {
     @FXML
     private Button btnConsultar;
     @FXML
@@ -74,29 +74,13 @@ public class ConsultaHeroiController {
             }
         }
     }
-    public TableCell<Heroi, String> wrap(){
-        return new TableCell<Heroi, String>() {
-            Text text = new Text();
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                    return;
-                }
-                text.setWrappingWidth(getTableColumn().getWidth() - 10);
-                text.setText(item);
-                setGraphic(text);
-            }
-        };
-    }
     private void preencheColunas() {
         nomeColuna.setCellValueFactory(
                 new PropertyValueFactory<Heroi,String>("nome")
         );
         nomeColuna.setCellFactory(new Callback<TableColumn<Heroi, String>, TableCell<Heroi, String>>() {
             public TableCell call(TableColumn param) {
-                return wrap();
+                return wrapHeroi();
             }
         });
         idColuna.setCellValueFactory(
@@ -107,7 +91,7 @@ public class ConsultaHeroiController {
         );
         descColuna.setCellFactory(new Callback<TableColumn<Heroi, String>, TableCell<Heroi, String>>() {
             public TableCell call(TableColumn param) {
-                return wrap();
+                return wrapHeroi();
             }
         });
         imgColuna.setCellValueFactory(
