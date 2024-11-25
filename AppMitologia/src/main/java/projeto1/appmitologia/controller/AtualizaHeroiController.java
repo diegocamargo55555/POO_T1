@@ -1,96 +1,52 @@
 package projeto1.appmitologia.controller;
 
 import javafx.scene.control.*;
-import projeto1.appmitologia.model.Heroi;
 import projeto1.appmitologia.dao.HeroiDAO;
+import projeto1.appmitologia.model.Heroi;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import java.sql.SQLException;
 
-public class AtualizaHeroiController {
+public class AtualizaHeroiController extends GeralAvisos {
 
     @FXML
-    private Button bAtualiza;
-
-    @FXML
-    private TextField idHeroiField, nome, img;
-
-    @FXML
-    private TextArea desc;
-
-    @FXML
-    private void bAtualizaOnAction(ActionEvent event) {
-        if (idHeroiField.getText().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Por favor, insira o ID do herói para atualizar.", ButtonType.OK);
-            alert.setTitle("ID do Herói Necessário");
-            alert.setHeaderText("Atenção");
-            alert.show();
-            return;
-        }
-
-        int idHeroi;
-        try {
-            idHeroi = Integer.parseInt(idHeroiField.getText());
-        } catch (NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "ID do herói deve ser um número.", ButtonType.OK);
-            alert.setTitle("Erro no ID");
-            alert.setHeaderText("Atenção");
-            alert.show();
-            return;
-        }
+    private void bAtualizaHeroiOnAction(ActionEvent event) {
+        int idHeroi = validarId(idHeroiField.getText(), "Herói");
+        if (idHeroi == -1) return;
 
         HeroiDAO heroiDAO = new HeroiDAO();
         try {
             Heroi heroiExistente = heroiDAO.buscaPorId(idHeroi);
             if (heroiExistente == null) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Herói com o ID " + idHeroi + " não encontrado.", ButtonType.OK);
-                alert.setTitle("Herói não encontrado");
-                alert.setHeaderText("Atenção");
-                alert.show();
+                criarAlerta(Alert.AlertType.WARNING, "Herói com ID " + idHeroi + " não encontrado.", "Herói não encontrado").show();
                 return;
             }
-            if (!nome.getText().isEmpty()) {
-                heroiExistente.setNome(nome.getText());
-            }
-            if (!desc.getText().isEmpty()) {
-                heroiExistente.setDescricao(desc.getText());
-            }
-            if (!img.getText().isEmpty()) {
-                heroiExistente.setUrl(img.getText());
-            }
 
-            Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION, "Deseja atualizar o Herói?", ButtonType.CANCEL, ButtonType.OK);
-            confirmAlert.setTitle("Confirmação de Atualização");
-            confirmAlert.setHeaderText("Confirme a atualização");
+            atualizarDadosHeroi(heroiExistente);
 
+            Alert confirmAlert = criarAlerta(Alert.AlertType.CONFIRMATION, "Deseja atualizar o Herói?", "Confirmação de Atualização");
             confirmAlert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
                     try {
                         heroiDAO.atualiza(heroiExistente);
-                        Alert successAlert = new Alert(Alert.AlertType.INFORMATION, "Herói atualizado com sucesso!", ButtonType.OK);
-                        successAlert.setTitle("Sucesso");
-                        successAlert.setHeaderText("Informação");
-                        successAlert.show();
+                        criarAlerta(Alert.AlertType.INFORMATION, "Herói atualizado com sucesso!", "Sucesso").show();
                     } catch (SQLException e) {
-                        Alert errorAlert = new Alert(Alert.AlertType.ERROR, "Erro ao atualizar herói!", ButtonType.OK);
-                        errorAlert.setTitle("Erro");
-                        errorAlert.setHeaderText("Informação");
-                        errorAlert.show();
+                        mostrarErroAlert("Erro ao atualizar herói!");
                         e.printStackTrace();
                     }
                 } else {
-                    Alert cancelAlert = new Alert(Alert.AlertType.INFORMATION, "Atualização do herói cancelada.", ButtonType.OK);
-                    cancelAlert.setTitle("Cancelado");
-                    cancelAlert.setHeaderText("Informação");
-                    cancelAlert.show();
+                    criarAlerta(Alert.AlertType.INFORMATION, "Atualização do herói cancelada.", "Cancelado").show();
                 }
             });
         } catch (SQLException e) {
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR, "Erro ao buscar herói!", ButtonType.OK);
-            errorAlert.setTitle("Erro");
-            errorAlert.setHeaderText("Informação");
-            errorAlert.show();
+            mostrarErroAlert("Erro ao buscar herói!");
             e.printStackTrace();
         }
+    }
+
+    private void atualizarDadosHeroi(Heroi heroi) {
+        if (!nome.getText().isEmpty()) heroi.setNome(nome.getText());
+        if (!desc.getText().isEmpty()) heroi.setDescricao(desc.getText());
+        if (!img.getText().isEmpty()) heroi.setUrl(img.getText());
     }
 }

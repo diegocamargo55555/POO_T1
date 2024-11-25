@@ -90,7 +90,7 @@
                     </font>
                 </Text>
                 <TextArea fx:id="descricao" prefHeight="129.0" prefWidth="211.0" promptText="Descrição" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.rowSpan="4" />
-                <Button fx:id="bAtualiza" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#bAtualizaOnAction" prefHeight="25.0" prefWidth="412.0" style="-fx-background-color: #dba656; -fx-border-color: #Ffff;" text="Atualizar" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9">
+                <Button fx:id="bAtualizaConto" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#bAtualizaContoOnAction" prefHeight="25.0" prefWidth="412.0" style="-fx-background-color: #dba656; -fx-border-color: #Ffff;" text="Atualizar" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
