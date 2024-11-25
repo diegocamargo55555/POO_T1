@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
-public class ConsultaContoController {
+public class ConsultaContoController extends Tabelas{
     @FXML
     private Button btnConsulta;
     @FXML
@@ -57,7 +57,7 @@ public class ConsultaContoController {
         );
         nomeContoColuna.setCellFactory(new Callback<TableColumn<Conto, String>, TableCell<Conto, String>>() {
             public TableCell call(TableColumn param) {
-                return wrap();
+                return wrapConto();
             }
         });
         nomeHeroiColuna.setCellValueFactory(
@@ -65,7 +65,7 @@ public class ConsultaContoController {
         );
         nomeHeroiColuna.setCellFactory(new Callback<TableColumn<Conto, String>, TableCell<Conto, String>>() {
             public TableCell call(TableColumn param) {
-                return wrap();
+                return wrapConto();
             }
         });
         localColuna.setCellValueFactory(
@@ -73,7 +73,7 @@ public class ConsultaContoController {
         );
         localColuna.setCellFactory(new Callback<TableColumn<Conto, String>, TableCell<Conto, String>>() {
             public TableCell call(TableColumn param) {
-                return wrap();
+                return wrapConto();
             }
         });
         descColuna.setCellValueFactory(
@@ -82,26 +82,11 @@ public class ConsultaContoController {
         );
         descColuna.setCellFactory(new Callback<TableColumn<Conto, String>, TableCell<Conto, String>>() {
             public TableCell call(TableColumn param) {
-                return wrap();
+                return wrapConto();
             }
         });
     }
-    public TableCell<Conto, String> wrap(){
-        return new TableCell<Conto, String>() {
-            Text text = new Text();
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                    return;
-                }
-                text.setWrappingWidth(getTableColumn().getWidth() - 10);
-                text.setText(item);
-                setGraphic(text);
-            }
-        };
-    }
+
     public void btnConsultarOnAction(ActionEvent actionEvent) throws SQLException {
         Conto conto1 = new Conto();
         ArrayList<Conto> contos = new ArrayList<>();

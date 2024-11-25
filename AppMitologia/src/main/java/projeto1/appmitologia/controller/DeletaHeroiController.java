@@ -16,7 +16,7 @@ import projeto1.appmitologia.model.Heroi;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DeletaHeroiController {
+public class DeletaHeroiController extends Tabelas {
     @FXML
     private Button btnConsultar;
     @FXML
@@ -52,29 +52,14 @@ public class DeletaHeroiController {
             tblHeroi.setItems(objeto);
         }
     }
-    public TableCell<Heroi, String> wrap(){
-        return new TableCell<Heroi, String>() {
-            Text text = new Text();
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                    return;
-                }
-                text.setWrappingWidth(getTableColumn().getWidth() - 10);
-                text.setText(item);
-                setGraphic(text);
-            }
-        };
-    }
+
     private void preencheColunas() {
         nomeColuna.setCellValueFactory(
                 new PropertyValueFactory<Heroi,String>("nome")
         );
         nomeColuna.setCellFactory(new Callback<TableColumn<Heroi, String>, TableCell<Heroi, String>>() {
             public TableCell call(TableColumn param) {
-                return wrap();
+                return wrapHeroi();
             }
         });
         idColuna.setCellValueFactory(
@@ -85,7 +70,7 @@ public class DeletaHeroiController {
         );
         descColuna.setCellFactory(new Callback<TableColumn<Heroi, String>, TableCell<Heroi, String>>() {
             public TableCell call(TableColumn param) {
-                return wrap();
+                return wrapHeroi();
             }
         });
         imgColuna.setCellValueFactory(
