@@ -1,11 +1,13 @@
 package projeto1.appmitologia.controller;
 
-import javafx.scene.control.*;
-import projeto1.appmitologia.dao.HeroiDAO;
-import projeto1.appmitologia.model.Heroi;
+import java.sql.SQLException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import java.sql.SQLException;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import projeto1.appmitologia.dao.HeroiDAO;
+import projeto1.appmitologia.model.Heroi;
 
 public class IncluiHeroiController extends GeralAvisos {
 
@@ -30,6 +32,10 @@ public class IncluiHeroiController extends GeralAvisos {
         });
     }
 
+    /*  2º Refatoração
+        Autor: Giovana
+        Separa os preenchimentos de campo do restante do código
+        Objetivo: Deixa o codigo mais claro e mais compacto*/
     private Heroi criarHeroi() {
         Heroi heroi = new Heroi();
         heroi.setNome(nome.getText());

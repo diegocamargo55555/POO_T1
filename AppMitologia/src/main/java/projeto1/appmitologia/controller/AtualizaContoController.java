@@ -1,14 +1,19 @@
 package projeto1.appmitologia.controller;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.event.ActionEvent;
-import projeto1.appmitologia.dao.ContoDAO;
-import projeto1.appmitologia.model.Conto;
 import java.sql.SQLException;
 
-public class AtualizaContoController extends GeralAvisos {
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import projeto1.appmitologia.dao.ContoDAO;
+import projeto1.appmitologia.model.Conto;
 
+public class AtualizaContoController extends GeralAvisos {
+     /* 1º Refatoração
+        Autor: Giovana
+        Utiliza a valição de id
+        Objetivo: Deixa o codigo mais claro e mais compacto, já que não é preciso repetir os métodos*/ 
     @FXML
     private void bAtualizaContoOnAction(ActionEvent event) {
         int id = validarId(idConto.getText(), "Conto");
@@ -44,7 +49,11 @@ public class AtualizaContoController extends GeralAvisos {
             e.printStackTrace();
         }
     }
-
+    
+    /*  2º Refatoração
+        Autor: Giovana
+        Separa as validadoções de campo do restante do código
+        Objetivo: Deixa o codigo mais claro e mais compacto*/ 
     private void atualizarDadosConto(Conto conto) {
         if (!descricao.getText().isEmpty()) conto.setDescricao(descricao.getText());
         if (!localizacao.getText().isEmpty()) conto.setLocalizacao(localizacao.getText());

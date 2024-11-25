@@ -1,11 +1,13 @@
 package projeto1.appmitologia.controller;
 
-import javafx.scene.control.*;
-import projeto1.appmitologia.dao.ContoDAO;
-import projeto1.appmitologia.model.Conto;
+import java.sql.SQLException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import java.sql.SQLException;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import projeto1.appmitologia.dao.ContoDAO;
+import projeto1.appmitologia.model.Conto;
 
 public class IncluiContoController extends GeralAvisos {
 
@@ -30,6 +32,10 @@ public class IncluiContoController extends GeralAvisos {
         });
     }
 
+    /*  2º Refatoração
+        Autor: Giovana
+        Separa os preenchimentos de campo do restante do código
+        Objetivo: Deixa o codigo mais claro e mais compacto*/ 
     private Conto criarConto() {
         Conto conto = new Conto();
         conto.setNome(nome.getText());
