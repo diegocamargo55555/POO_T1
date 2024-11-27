@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDAO implements IConst {
+public class UserDAO implements IConst, IUser{
 
     private static String sql;
     private static Connection connection;
@@ -31,7 +31,7 @@ public class UserDAO implements IConst {
         close();
     }
 
-    public static void remove(String id) throws SQLException {
+    public void remove(String id) throws SQLException {
         open();
         sql = "DELETE FROM usuario WHERE UserID = ?";
         statement = connection.prepareStatement(sql);
@@ -77,7 +77,7 @@ public class UserDAO implements IConst {
     }
 
 
-    public static int getHeroiFav() throws SQLException {
+    public int getHeroiFav() throws SQLException {
         open();
         sql = "select heroiid from usuario WHERE userid = ?";
         statement = connection.prepareStatement(sql);
@@ -93,7 +93,7 @@ public class UserDAO implements IConst {
         return resultINT;
     }
 
-    public static int getContoFav() throws SQLException {
+    public int getContoFav() throws SQLException {
         open();
         sql = "select contoid from usuario WHERE userid = ?";
         statement = connection.prepareStatement(sql);

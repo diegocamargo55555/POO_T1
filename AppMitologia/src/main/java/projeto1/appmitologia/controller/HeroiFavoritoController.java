@@ -36,7 +36,8 @@ public class HeroiFavoritoController {
     }
 
     public ObservableList<Heroi> getHerois() throws SQLException {
-        int heroID = UserDAO.getHeroiFav();
+        UserDAO user = new UserDAO();
+        int heroID = user.getHeroiFav();
         HeroiDAO heroiDAO = new HeroiDAO();
         ObservableList<Heroi> heroi = FXCollections.observableArrayList(heroiDAO.buscaPorId(heroID));
         return heroi;
