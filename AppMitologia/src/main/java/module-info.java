@@ -7,6 +7,7 @@ module projeto1.appmitologia {
     requires transitive java.sql;
     requires java.desktop;
     requires javafx.graphics;
+    requires junit;
 
     opens projeto1.appmitologia.controller to javafx.fxml;
     exports projeto1.appmitologia.controller;

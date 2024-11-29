@@ -46,8 +46,6 @@ public class MenuController {
 
     @FXML
     void loginOnAction(ActionEvent event) throws SQLException {
-
-
         UserDAO userDAO = new UserDAO();
         String username = UserName.getText();
         System.out.println("\npasssenha " + passfield.getText());

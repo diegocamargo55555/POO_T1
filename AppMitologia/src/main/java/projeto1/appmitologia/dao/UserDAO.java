@@ -93,6 +93,8 @@ public class UserDAO implements IConst, IUser{
         return resultINT;
     }
 
+
+
     public int getContoFav() throws SQLException {
         open();
         sql = "select contoid from usuario WHERE userid = ?";
