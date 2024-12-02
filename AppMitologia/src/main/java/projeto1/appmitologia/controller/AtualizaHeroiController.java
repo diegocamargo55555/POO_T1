@@ -13,6 +13,7 @@ public class AtualizaHeroiController extends GeralAvisos {
 
     @FXML
     private void bAtualizaHeroiOnAction(ActionEvent event) {
+        
         int idHeroi = validarId(idHeroiField.getText(), "Herói");
         if (idHeroi == -1) return;
 

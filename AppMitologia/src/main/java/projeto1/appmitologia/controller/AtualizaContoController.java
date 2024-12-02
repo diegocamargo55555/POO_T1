@@ -10,7 +10,7 @@ import projeto1.appmitologia.dao.ContoDAO;
 import projeto1.appmitologia.model.Conto;
 
 public class AtualizaContoController extends GeralAvisos {
-     /* 1º Refatoração
+     /* 4º Refatoração
         Autor: Giovana
         Utiliza a valição de id
         Objetivo: Deixa o codigo mais claro e mais compacto, já que não é preciso repetir os métodos*/ 
