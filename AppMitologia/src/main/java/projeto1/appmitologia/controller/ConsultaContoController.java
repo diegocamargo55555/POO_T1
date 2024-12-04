@@ -42,6 +42,10 @@ public class ConsultaContoController extends Tabelas{
         preencherColunas();
         tblConto.setItems(getContos());
     }
+     //  4º Refatoração
+    //  Autor: Ana Beatrz
+    //  alteração de nome da variavel
+    //  Objetivo: melhor entedimento do código/
     public ObservableList<Conto> getContos() throws SQLException {
         ContoDAO contoDAO = new ContoDAO();
         ObservableList<Conto> conto = FXCollections.observableArrayList(contoDAO.listaTodos());
