@@ -35,7 +35,10 @@ public class DeletaHeroiController extends Tabelas {
     private TextField txtId;
     @FXML
     private Button btnDeletar;
-
+     //  4º Refatoração
+    //  Autor: Ana Beatrz
+    //  alteração de nome da variavel
+    //  Objetivo: melhor entedimento do código/
     public ObservableList<Heroi> getHerois() throws SQLException {
         HeroiDAO heroiDAO = new HeroiDAO();
         ObservableList<Heroi> heroi = FXCollections.observableArrayList(heroiDAO.listaTodos());
