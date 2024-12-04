@@ -75,7 +75,10 @@ public class DeletaContoController extends Tabelas{
             }
         });
     }
-
+     //  4º Refatoração
+    //  Autor: Ana Beatrz
+    //  alteração de nome da variavel
+    //  Objetivo: melhor entedimento do código/
     public void btnConsultarOnAction(ActionEvent actionEvent) throws SQLException {
         ArrayList<Conto> contos = new ArrayList<>();
         ContoDAO contoDAO = new ContoDAO();
