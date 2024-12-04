@@ -102,9 +102,11 @@ public class HeroiDAO implements IHeroi, IConst{
     }
 
 
-    public List<Heroi> listaTodos() throws SQLException {
-        open();
-        sql = "SELECT * FROM heroi";
+     //  3º Refatoração
+    //  Autor: Ana Beatrz
+    //  cria método getHerois com parte de código em comum usado por metodos
+    //  Objetivo: compactação do código
+    public ArrayList<Heroi> getHerois() throws SQLException {
         statement = connection.prepareStatement(sql);
         result = statement.executeQuery();
         ArrayList<Heroi> herois = new ArrayList<>();
@@ -127,28 +129,14 @@ public class HeroiDAO implements IHeroi, IConst{
         close();
         return herois;
     }
+    public ArrayList<Heroi> listaTodos() throws SQLException {
+        open();
+        sql = "SELECT * FROM heroi";
+        return getHerois();
+    }
     public ArrayList<Heroi> listaTodosNomes(String nomeHeroi) throws SQLException{
         open();
         sql = "SELECT * FROM heroi WHERE nomeHeroi ~*'" + nomeHeroi + "'";
-        statement = connection.prepareStatement(sql);
-        result = statement.executeQuery();
-        ArrayList<Heroi> herois = new ArrayList<>();
-        while (result.next()) {
-            Heroi heroi = new Heroi();
-            heroi.setId(result.getInt("heroiId"));
-            heroi.setNome(result.getString("nomeHeroi"));
-            heroi.setDescricao(result.getString("descricaoHeroi"));
-            heroi.setUrl(result.getString("imagemHeroi"));
-            try {
-                heroi.setImagemFisica(new ImageView(new Image(heroi.getUrl())));
-            }catch (IllegalArgumentException e){
-                heroi.setImagemFisica(new ImageView(new Image("https://i.ibb.co/9hpB2Vj/notFound.png")));
-            }
-            heroi.getImagem().setFitWidth(70);
-            heroi.getImagem().setFitHeight(70);
-            herois.add(heroi);
-        }
-        close();
-        return herois;
+        return getHerois();
     }
 }
