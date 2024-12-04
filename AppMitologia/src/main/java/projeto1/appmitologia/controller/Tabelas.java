@@ -5,6 +5,10 @@ import projeto1.appmitologia.model.Conto;
 import projeto1.appmitologia.model.Heroi;
 
 public class Tabelas {
+    //  1º Refatoração
+    //  Autor: Ana Beatrz
+    //  cria classe Tabelas, com partes de código em comum usada por classes.
+    //  Objetivo: compactação do código
     public TableCell<Heroi, String> wrapHeroi(){
         return new TableCell<Heroi, String>() {
             Text text = new Text();
