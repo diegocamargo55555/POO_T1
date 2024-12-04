@@ -90,24 +90,7 @@ public class ContoDAO implements IConst, IConto{
     public List<Conto> listaTodos() throws SQLException {
         open();
         sql = "SELECT * FROM conto";
-        statement = connection.prepareStatement(sql);
-        result = statement.executeQuery();
-        ArrayList<Conto> contos = new ArrayList<>();
-        while (result.next()) {
-            Conto conto = new Conto();
-            conto.setId(result.getInt("contoId"));
-            conto.setNome(result.getString("nomeConto"));
-            conto.setDescricao(result.getString("descricaoConto"));
-            conto.setLocalizacao(result.getString("localizacaoConto"));
-            Heroi heroi = new Heroi();
-            HeroiDAO heroiDAO = new HeroiDAO();
-            heroi.setId(result.getInt("heroiId"));
-            heroi = heroiDAO.buscaPorId(heroi.getId());
-            conto.setNomeHeroi(heroi.getNome());
-            contos.add(conto);
-        }
-        close();
-        return contos;
+        return getArrayContos();
     }
 
     public ArrayList<Conto> listaTodosNomesHeroi(String nomeHeroi) throws SQLException {
@@ -137,6 +120,13 @@ public class ContoDAO implements IConst, IConto{
     public ArrayList<Conto> listaTodosNomeConto(String nomeConto) throws SQLException {
         open();
         sql = "SELECT * FROM conto WHERE nomeConto ~* '" + nomeConto + "'";
+        return getArrayContos();
+    }
+    //  2º Refatoração
+    //  Autor: Ana Beatrz
+    //  cria método getArrayContos com parte de código em comum usado por metodos
+    //  Objetivo: compactação do código
+    public ArrayList<Conto> getArrayContos() throws SQLException {
         statement = connection.prepareStatement(sql);
         result = statement.executeQuery();
         ArrayList<Conto> contos = new ArrayList<>();
@@ -156,6 +146,7 @@ public class ContoDAO implements IConst, IConto{
         close();
         return contos;
     }
+
     public Conto buscaPorNome(String nomeConto) throws SQLException {
         open();
         sql = "SELECT * FROM conto WHERE nomeConto = ?";
