@@ -46,4 +46,5 @@ public class TestContoDAO {
         result = statement.executeQuery();
         assertNotNull(heroi2.getId());
     }
+
 }
