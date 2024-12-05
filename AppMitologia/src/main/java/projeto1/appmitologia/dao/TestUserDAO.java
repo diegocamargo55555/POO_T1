@@ -25,8 +25,6 @@ public class TestUserDAO implements IConst {
         connection.close();
     }
 
-
-
     @Test
     public void Testgetinsere() throws SQLException {
         UserDAO u = new UserDAO();
@@ -50,10 +48,5 @@ public class TestUserDAO implements IConst {
 
         assertEquals("IHWA", h.getNome());
 
-
-
-
     }
-
-
 }
