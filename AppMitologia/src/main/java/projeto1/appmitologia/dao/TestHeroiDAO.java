@@ -26,6 +26,9 @@ public class TestHeroiDAO {
     public void close() throws SQLException{
         connection.close();
     }
+    //Teste 3
+    //Autor: Ana Beatriz
+    //Verifica se o id de um heroi enviado posteriormente é menor do que um enviado depois, verificando seu funcionamento correto.
     @Test
     public void TestaIdEmInsercao() throws SQLException {
         HeroiDAO heroiDao = new HeroiDAO();
@@ -47,6 +50,9 @@ public class TestHeroiDAO {
         heroiDao.remove(heroi3.getId());
         heroiDao.remove(heroi4.getId());
     }
+    //Teste 4
+    //Autor: Ana Beatrz
+    //Verifica se a atualização está funcionando corretamente.
     @Test
     public void TestAtualiza() throws SQLException{
         HeroiDAO heroiDAO = new HeroiDAO();

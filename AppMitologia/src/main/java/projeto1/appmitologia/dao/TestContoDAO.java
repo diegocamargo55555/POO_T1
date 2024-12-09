@@ -27,6 +27,9 @@ public class TestContoDAO {
     public void close() throws SQLException{
         connection.close();
     }
+    //Teste 1
+    //Autor: Ana Beatiz
+    //verifica se a inserção está funcionando de forma correta.
     @Test
     public void TestInsere() throws SQLException {
         ContoDAO contoDAO = new ContoDAO();
@@ -50,5 +53,21 @@ public class TestContoDAO {
         statement.setInt(1, heroi.getId());
         result = statement.executeQuery();
         assertNotNull(heroi2.getId());
+    }
+    //Teste 2
+    //Autor: Ana Beatrz
+    //Verifica se a remoção está funcionamdo de forma correta
+    @Test
+    public void TestRemove() throws SQLException {
+        ContoDAO contoDAO = new ContoDAO();
+        Conto conto = new Conto();
+        conto.setDescricao("conto");
+        conto.setNome("conto");
+        conto.setNomeHeroi("heroi");
+        contoDAO.insere(conto);
+        conto = contoDAO.buscaPorNome(conto.getNome());
+        contoDAO.remove(conto.getId());
+        conto = contoDAO.buscaPorId(conto.getId());
+        assertNotNull(conto);
     }
 }
