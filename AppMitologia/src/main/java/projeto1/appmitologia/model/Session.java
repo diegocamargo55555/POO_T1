@@ -1,7 +1,7 @@
 package projeto1.appmitologia.model;
 // refatoração encapsulamento session
 public class Session {
-    public static String cookie;
+    private static String cookie;
 
     public static String getCookie() {
         return cookie;

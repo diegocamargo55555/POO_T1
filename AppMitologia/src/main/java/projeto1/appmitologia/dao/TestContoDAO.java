@@ -1,5 +1,8 @@
 package projeto1.appmitologia.dao;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableSet;
 import org.junit.Test;
 import projeto1.appmitologia.model.Conto;
 import projeto1.appmitologia.model.Heroi;
@@ -8,7 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class TestContoDAO {
@@ -46,5 +51,4 @@ public class TestContoDAO {
         result = statement.executeQuery();
         assertNotNull(heroi2.getId());
     }
-
 }

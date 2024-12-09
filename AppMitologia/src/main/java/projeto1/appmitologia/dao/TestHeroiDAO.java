@@ -1,5 +1,6 @@
 package projeto1.appmitologia.dao;
 
+import javafx.scene.SubScene;
 import org.junit.Test;
 import projeto1.appmitologia.model.Heroi;
 
@@ -7,8 +8,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-public class TestHeroiDao {
+import static org.junit.Assert.assertEquals;
+
+public class TestHeroiDAO {
     private String sql;
     private Connection connection;
     private PreparedStatement statement;
@@ -37,5 +44,24 @@ public class TestHeroiDao {
         heroi3 = heroiDao.buscaPorNome(heroi.getNome());
         heroi4 = heroiDao.buscaPorNome(heroi2.getNome());
         assert(heroi3.getId() < heroi4.getId());
+        heroiDao.remove(heroi3.getId());
+        heroiDao.remove(heroi4.getId());
+    }
+    @Test
+    public void TestAtualiza() throws SQLException{
+        HeroiDAO heroiDAO = new HeroiDAO();
+        Heroi heroi = new Heroi();
+        heroi.setNome("testar");
+        heroi.setDescricao("testara");
+        heroi.setUrl("nao");
+        heroiDAO.insere(heroi);
+        heroi = heroiDAO.buscaPorNome(heroi.getNome());
+        heroi.setNome("aaaaaa");
+        Heroi heroi2 = new Heroi();
+        heroi2 = heroiDAO.buscaPorNome("testar");
+        heroiDAO.atualiza(heroi);
+        heroi = heroiDAO.buscaPorNome("aaaaaa");
+        assertEquals(heroi.getId(), heroi2.getId());
+        heroiDAO.remove(heroi.getId());
     }
 }

@@ -44,7 +44,6 @@ public class HeroiDAO implements IHeroi, IConst{
         statement.executeUpdate();
         close();
     }
-
     public void remove(int id) throws SQLException {
         open();
         sql = "DELETE FROM heroi WHERE heroiid = ?";
@@ -73,7 +72,6 @@ public class HeroiDAO implements IHeroi, IConst{
             return null;
         }
     }
-
     public Heroi buscaPorId(int heroiid) throws SQLException {
         open();
         sql = "SELECT * FROM heroi WHERE heroiid = ?";
@@ -100,8 +98,6 @@ public class HeroiDAO implements IHeroi, IConst{
             return null;
         }
     }
-
-
      //  3º Refatoração
     //  Autor: Ana Beatrz
     //  cria método getHerois com parte de código em comum usado por metodos
