@@ -36,7 +36,7 @@ public class IncluiHeroiController extends GeralAvisos {
         Autor: Giovana
         Separa os preenchimentos de campo do restante do código
         Objetivo: Deixa o codigo mais claro e mais compacto*/
-    private Heroi criarHeroi() {
+    Heroi criarHeroi() {
         Heroi heroi = new Heroi();
         heroi.setNome(nome.getText());
         heroi.setDescricao(desc.getText());

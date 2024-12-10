@@ -40,13 +40,13 @@ public class GeralAvisos {
         Objetivo: Reunir toda a validação em uma única função em uma classe geral*/
     public int validarId(String idText, String tipo) {
         if (idText.isEmpty()) {
-            criarAlerta(Alert.AlertType.WARNING, "Por favor, insira o ID do " + tipo + " para atualizar.", tipo + " Necessário").show();
+            //criarAlerta(Alert.AlertType.WARNING, "Por favor, insira o ID do " + tipo + " para atualizar.", tipo + " Necessário").show();
             return -1;
         }
         try {
             return Integer.parseInt(idText);
         } catch (NumberFormatException e) {
-            criarAlerta(Alert.AlertType.ERROR, "ID do " + tipo + " deve ser um número.", "Erro no ID").show();
+            //criarAlerta(Alert.AlertType.ERROR, "ID do " + tipo + " deve ser um número.", "Erro no ID").show();
             return -1;
         }
     }

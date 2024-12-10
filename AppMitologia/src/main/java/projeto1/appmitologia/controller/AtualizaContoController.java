@@ -53,8 +53,8 @@ public class AtualizaContoController extends GeralAvisos {
     /*  2º Refatoração
         Autor: Giovana
         Separa as validadoções de campo do restante do código
-        Objetivo: Deixa o codigo mais claro e mais compacto*/ 
-    private void atualizarDadosConto(Conto conto) {
+        Objetivo: Deixa o codigo mais claro e mais compacto*/
+    void atualizarDadosConto(Conto conto) {
         if (!descricao.getText().isEmpty()) conto.setDescricao(descricao.getText());
         if (!localizacao.getText().isEmpty()) conto.setLocalizacao(localizacao.getText());
         if (!nomeConto.getText().isEmpty()) conto.setNome(nomeConto.getText());

@@ -50,8 +50,8 @@ public class AtualizaHeroiController extends GeralAvisos {
     /*  2º Refatoração
         Autor: Giovana
         Separa as validadoções de campo do restante do código
-        Objetivo: Deixa o codigo mais claro e mais compacto*/ 
-    private void atualizarDadosHeroi(Heroi heroi) {
+        Objetivo: Deixa o codigo mais claro e mais compacto*/
+    void atualizarDadosHeroi(Heroi heroi) {
         if (!nome.getText().isEmpty()) heroi.setNome(nome.getText());
         if (!desc.getText().isEmpty()) heroi.setDescricao(desc.getText());
         if (!img.getText().isEmpty()) heroi.setUrl(img.getText());
