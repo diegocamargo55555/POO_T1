@@ -13,8 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class TestContoDAO {
     private String sql;
@@ -56,18 +55,12 @@ public class TestContoDAO {
     }
     //Teste 2
     //Autor: Ana Beatrz
-    //Verifica se a remoção está funcionamdo de forma correta
+    //Verifica se a busca funciona como o esperado quando é pesquisado um conto não existente.
     @Test
-    public void TestRemove() throws SQLException {
+    public void TestaBusca() throws SQLException {
         ContoDAO contoDAO = new ContoDAO();
         Conto conto = new Conto();
-        conto.setDescricao("conto");
-        conto.setNome("conto");
-        conto.setNomeHeroi("heroi");
-        contoDAO.insere(conto);
-        conto = contoDAO.buscaPorNome(conto.getNome());
-        contoDAO.remove(conto.getId());
-        conto = contoDAO.buscaPorId(conto.getId());
-        assertNotNull(conto);
+        conto = contoDAO.buscaPorNome("nao ha");
+        assertNull(conto);
     }
 }
