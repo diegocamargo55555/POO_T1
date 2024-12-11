@@ -29,24 +29,18 @@ public class TestUserDAO implements IConst {
     public void Testgetinsere() throws SQLException {
         UserDAO u = new UserDAO();
         User usuario = new User("IHWA", "YEON");
+        User userTest = new User();
         u.remove("IHWA");
-
         u.insere(usuario);
-
         open();
-        sql = "select senha from usuario WHERE UserID = IHWA";
+        sql = "SELECT UserID FROM usuario WHERE UserID = 'IHWA';";
         statement = connection.prepareStatement(sql);
         result = statement.executeQuery();
         Heroi h = new Heroi();
-
         if (result.next()) {
-            h.setId(result.getInt("UserID"));
+            userTest.setUserName(result.getString("UserID")); // Se a coluna for uma String
         }
         close();
-        int resultINT = h.getId();
-        System.out.println(resultINT);
-
-        assertEquals("IHWA", h.getNome());
-
+        assertEquals("IHWA", userTest.getUserName());
     }
 }

@@ -26,9 +26,11 @@ public class DeletUserController {
 
         UserDAO userDAO = new UserDAO();
         String pass = senha.getText();
+        Session cookie = new Session();
 
-        if (userDAO.authenticateUser(Session.getCookie(), pass)) {
-            userDAO.remove(Session.getCookie());
+
+        if (userDAO.authenticateUser(cookie.getCookie(), pass)) {
+            userDAO.remove(cookie.getCookie());
             Alert alertConfirmacao = new Alert(Alert.AlertType.INFORMATION, "Usuario deletado com sucesso!", ButtonType.OK);
             alertConfirmacao.show();
         } else {
